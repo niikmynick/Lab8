@@ -140,11 +140,25 @@ class Console(host: String, port: Int) {
      * The function recursively asks for username and password until an Authorized message from the server is received.
      * Finally, saves the received token into the [token] variable.
      */
-    fun authorize(){
+    fun authorize() {
         outputManager.surePrint("Login or register to use the collection: ")
         val username = StringReader(outputManager, inputManager).read("Username: ")
         val password = StringReader(outputManager, inputManager).read("Password: ")
 
+        val query = Query(QueryType.AUTHORIZATION, "", mutableMapOf("username" to username, "password" to password))
+        val answer = connectionManager.checkedSendReceive(query)
+        logger.debug("Sent authorization query")
+        if (answer.answerType == AnswerType.ERROR) {
+            outputManager.println(answer.message)
+            authorize()
+        } else {
+            logger.debug("Authorized")
+            authorized = true
+            token = answer.token
+        }
+    }
+
+    fun authorize(username: String, password: String) {
         val query = Query(QueryType.AUTHORIZATION, "", mutableMapOf("username" to username, "password" to password))
         val answer = connectionManager.checkedSendReceive(query)
         logger.debug("Sent authorization query")

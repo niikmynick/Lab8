@@ -11,7 +11,7 @@ import javafx.scene.text.Text
 import tornadofx.*
 
 class MainView : View() {
-//    private val client = Console("localhost", 8061)
+    private val console = Console("localhost", 8061)
 
     override val root = VBox()
 
@@ -86,9 +86,15 @@ class MainView : View() {
 
         // Update the UI based on whether the user is logged in or not
         if (result.isPresent) {
-            root.clear()
-            root.alignment = Pos.TOP_LEFT
-            showMenu()
+            console.authorize(result.get().first, result.get().second)
+            if (console.authorized) {
+                root.clear()
+                root.alignment = Pos.TOP_LEFT
+                showMenu()
+            } else {
+                showLoginDialog()
+            }
+
         }
     }
 
