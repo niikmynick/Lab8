@@ -657,3 +657,76 @@
 2023-05-12 11:22:29.094 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
 2023-05-12 11:22:29.095 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 10.481 ms
 2023-05-12 11:22:29.105 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"logout","args":{},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg4MDAxOH0.if_DFMs4KB2nItdtaXsTzm72trptsW-bNwDGlaISHak"} to /127.0.0.1:8061
+2023-05-12 18:34:10.148 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:39:19.464 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:46:16.477 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:46:58.347 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:47:08.615 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:47:18.580 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:47:49.333 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:48:40.671 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:49:13.117 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 18:51:18.519 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:02:23.519 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:05:32.240 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:05:32.293 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:05:47.304 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 15007.8752 ms
+2023-05-12 19:05:47.304 [JavaFX Application Thread] WARN  clientUtils.Console - No server connection
+2023-05-12 19:06:36.712 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:06:36.765 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:06:48.171 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:06:48.223 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:07:03.228 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 15002.1502 ms
+2023-05-12 19:07:03.228 [JavaFX Application Thread] WARN  clientUtils.Console - No server connection
+2023-05-12 19:07:18.190 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:07:18.239 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:08:52.395 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:08:52.439 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:08:52.530 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 19:08:52.541 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 99.9686 ms
+2023-05-12 19:08:52.541 [JavaFX Application Thread] DEBUG clientUtils.Console - Connected to server
+2023-05-12 19:08:52.545 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"INITIALIZATION","message":"","args":{}} to /127.0.0.1:8061
+2023-05-12 19:08:52.557 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 19:08:52.557 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent initialization query
+2023-05-12 19:08:52.559 [JavaFX Application Thread] INFO  clientUtils.Console - Received commands from server: [info, show, add, update_id, remove_by_id, clear, add_if_min, remove_greater, remove_lower, remove_any_by_chapter, count_by_melee_weapon, filter_by_chapter, filter_by_weapon]
+2023-05-12 19:08:52.562 [JavaFX Application Thread] DEBUG clientUtils.Console - Registered basic client commands
+2023-05-12 19:12:41.604 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:12:41.691 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:12:41.714 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 19:12:41.723 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 30.4216 ms
+2023-05-12 19:12:41.723 [JavaFX Application Thread] DEBUG clientUtils.Console - Connected to server
+2023-05-12 19:12:41.739 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"INITIALIZATION","message":"","args":{}} to /127.0.0.1:8061
+2023-05-12 19:12:41.750 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 19:12:41.751 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent initialization query
+2023-05-12 19:12:41.754 [JavaFX Application Thread] INFO  clientUtils.Console - Received commands from server: [info, show, add, update_id, remove_by_id, clear, add_if_min, remove_greater, remove_lower, remove_any_by_chapter, count_by_melee_weapon, filter_by_chapter, filter_by_weapon]
+2023-05-12 19:12:41.759 [JavaFX Application Thread] DEBUG clientUtils.Console - Registered basic client commands
+2023-05-12 19:12:52.299 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:12:52.300 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{}} to localhost/127.0.0.1:8061
+2023-05-12 19:12:52.309 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6791"}
+2023-05-12 19:12:52.309 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Ping with server: 8.7597 ms
+2023-05-12 19:12:52.309 [JavaFX Application Thread] DEBUG clientUtils.Console - Connected to server
+2023-05-12 19:12:52.309 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"INITIALIZATION","message":"","args":{}} to /127.0.0.1:8061
+2023-05-12 19:12:52.317 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6791"}
+2023-05-12 19:12:52.323 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent initialization query
+2023-05-12 19:12:52.323 [JavaFX Application Thread] INFO  clientUtils.Console - Received commands from server: [info, show, add, update_id, remove_by_id, clear, add_if_min, remove_greater, remove_lower, remove_any_by_chapter, count_by_melee_weapon, filter_by_chapter, filter_by_weapon]
+2023-05-12 19:12:52.323 [JavaFX Application Thread] DEBUG clientUtils.Console - Registered basic client commands
+2023-05-12 19:22:18.707 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:22:24.356 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:23:57.484 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:24:12.005 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:26:19.408 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:26:23.514 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:26:32.034 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:26:33.657 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:28:56.715 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:29:02.757 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:36:04.847 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:36:18.900 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:41:16.987 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:41:31.153 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:44:45.439 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:44:59.002 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:46:38.246 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:46:49.334 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-12 19:50:51.947 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-12 19:51:04.422 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791

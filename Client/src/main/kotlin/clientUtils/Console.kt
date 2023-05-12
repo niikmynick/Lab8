@@ -5,15 +5,8 @@ import commands.*
 import commands.consoleCommands.*
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
-import javafx.application.Application
-import javafx.scene.Node
-import javafx.scene.Scene
-import javafx.scene.control.Button
-import javafx.scene.layout.StackPane
-import javafx.stage.Stage
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import tornadofx.*
 import utils.*
 
 /**
