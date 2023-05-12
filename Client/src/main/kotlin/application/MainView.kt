@@ -3,23 +3,48 @@ package application
 import clientUtils.Console
 import tornadofx.*
 
+import tornadofx.*
+
 class MainView : View() {
-    override val root = vbox {
-        val console = Console("localhost", 8061)
+    private val client = Console("localhost", 8061)
+    private var connected = false
+    private var authorized = false
+    private var interactiveModeStarted = false
+
+    override val root = pane {
+
         button("Connect") {
             action {
-                console.connect()
+                client.connect()
+                connected = true
+                updateUI()
             }
         }
-        button("Authorize") {
-            action {
-                console.authorize()
+    }
+
+    private fun updateUI() {
+        if (connected && !authorized) {
+            val authorizeButton = button("Authorize") {
+                action {
+                    client.authorize()
+                    authorized = true
+                    updateUI()
+                }
             }
+            root.clear()
+            root.add(authorizeButton)
         }
-        button("Start Interactive Mode") {
-            action {
-                console.startInteractiveMode()
+
+        if (authorized && !interactiveModeStarted) {
+            val startButton = button("Start Interactive Mode") {
+                action {
+                    client.startInteractiveMode()
+                    interactiveModeStarted = true
+                    updateUI()
+                }
             }
+            root.clear()
+            root.add(startButton)
         }
     }
 }

@@ -5,7 +5,7 @@ import tornadofx.*
 
 class GUI : App(MainView::class) {
     override fun start(stage: Stage) {
-        stage.isResizable = false
+        stage.isResizable = true
         super.start(stage)
     }
 }
