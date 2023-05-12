@@ -2418,3 +2418,234 @@
 2023-05-12 11:06:23.543 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@3904a5da
 2023-05-12 11:06:23.544 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
 2023-05-12 11:06:23.544 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:14:30.549 [main] INFO  serverUtils.Console - Initializing the server
+2023-05-12 11:14:30.561 [main] DEBUG serverUtils.Console - Command 'info' registered
+2023-05-12 11:14:30.561 [main] DEBUG serverUtils.Console - Command 'show' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'add' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'update_id' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'remove_by_id' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'clear' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'add_if_min' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'remove_greater' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'remove_lower' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'remove_any_by_chapter' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'count_by_melee_weapon' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'filter_by_chapter' registered
+2023-05-12 11:14:30.568 [main] DEBUG serverUtils.Console - Command 'filter_by_weapon' registered
+2023-05-12 11:14:30.568 [main] INFO  serverUtils.FileManager - Loading from database
+2023-05-12 11:14:30.785 [main] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-12 11:14:30.785 [main] INFO  serverUtils.Console - Collection loaded
+2023-05-12 11:14:30.790 [main] INFO  serverUtils.ConnectionManager - Server started on localhost/127.0.0.1:8072
+2023-05-12 11:14:30.835 [main] INFO  serverUtils.Console - The server is ready to receive commands
+2023-05-12 11:14:48.598 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:14:48.702 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:14:48.704 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@63da88bf
+2023-05-12 11:14:48.706 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:14:48.726 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:14:48.752 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:14:48.754 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:14:48.755 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@7ee81ab
+2023-05-12 11:14:48.758 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:14:48.759 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:14:48.808 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:14:48.809 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:14:48.810 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@2be9aac3
+2023-05-12 11:14:48.811 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:14:48.812 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:14:48.823 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"INITIALIZATION","message":"","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:14:48.824 [pool-2-thread-1] TRACE multithread.ReceiverThread - Received initialization request
+2023-05-12 11:14:48.830 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@663a87b3
+2023-05-12 11:14:48.832 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:14:48.834 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:14:57.175 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:14:57.176 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:14:57.176 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@5e11adf5
+2023-05-12 11:14:57.177 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:14:57.177 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:14:57.180 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"admin","password":"admin","sender":"/127.0.0.1:6790"}}
+2023-05-12 11:14:57.181 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:14:57.182 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-12 11:14:57.331 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-12 11:14:58.665 [pool-2-thread-1] DEBUG users.UserManager - User admin authorized
+2023-05-12 11:14:58.921 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@2d018c45
+2023-05-12 11:14:58.921 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:14:58.922 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg3OTU5OH0.QgWq1sv8gkNh_cuwr8EkuItYQTnHTPhv-ZnnRo-xYyo","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:15:07.394 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:15:07.395 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:15:07.395 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@4b588494
+2023-05-12 11:15:07.395 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:15:07.395 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:15:07.398 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:15:07.399 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:15:07.399 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@796d8553
+2023-05-12 11:15:07.400 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:15:07.400 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:15:07.415 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:15:07.417 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:15:07.417 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@2a40e18e
+2023-05-12 11:15:07.417 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:15:07.417 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:15:07.422 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"logout","args":{"sender":"/127.0.0.1:6790"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg3OTU5OH0.QgWq1sv8gkNh_cuwr8EkuItYQTnHTPhv-ZnnRo-xYyo"}
+2023-05-12 11:15:07.423 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:15:07.423 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@2a40e18e
+2023-05-12 11:15:07.424 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:15:07.424 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:18:39.276 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:18:39.279 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:18:39.282 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@7721a6d3
+2023-05-12 11:18:39.283 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:18:39.283 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:18:39.291 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:18:39.292 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:18:39.293 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@79e65647
+2023-05-12 11:18:39.295 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:18:39.295 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:18:39.340 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:18:39.341 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:18:39.342 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@7dd9cda3
+2023-05-12 11:18:39.342 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:18:39.342 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:18:39.349 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"INITIALIZATION","message":"","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:18:39.350 [pool-2-thread-2] TRACE multithread.ReceiverThread - Received initialization request
+2023-05-12 11:18:39.352 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@38db5c7c
+2023-05-12 11:18:39.353 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:18:39.353 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:18:46.315 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:18:46.315 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:18:46.316 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@42b6628a
+2023-05-12 11:18:46.316 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:18:46.316 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:18:46.318 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"admin","password":"admin","sender":"/127.0.0.1:6790"}}
+2023-05-12 11:18:46.319 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:18:46.319 [pool-2-thread-2] INFO  serverUtils.FileManager - Loading from database
+2023-05-12 11:18:46.507 [pool-2-thread-2] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-12 11:18:47.047 [pool-2-thread-2] DEBUG users.UserManager - User admin authorized
+2023-05-12 11:18:47.049 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@92940f5
+2023-05-12 11:18:47.050 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:18:47.050 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg3OTgyN30.i0_RAbEVUnRaA8VE7auhIGdc1txO6aEB3YLpkxDMGmo","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:18:53.755 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:18:53.755 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:18:53.756 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@3aae20a6
+2023-05-12 11:18:53.756 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:18:53.756 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:18:53.758 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:18:53.758 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:18:53.758 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@58f4a333
+2023-05-12 11:18:53.759 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:18:53.759 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:19:17.273 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:19:17.273 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:19:17.273 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@29273895
+2023-05-12 11:19:17.274 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:19:17.274 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:19:17.276 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:19:17.276 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:19:17.277 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@6a4afbac
+2023-05-12 11:19:17.277 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:19:17.277 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:19:17.286 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:19:17.287 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:19:17.287 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@21aa4d53
+2023-05-12 11:19:17.288 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:19:17.288 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:19:17.290 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"logout","args":{"sender":"/127.0.0.1:6790"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg3OTgyN30.i0_RAbEVUnRaA8VE7auhIGdc1txO6aEB3YLpkxDMGmo"}
+2023-05-12 11:19:17.291 [pool-2-thread-2] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:19:17.291 [ForkJoinPool.commonPool-worker-5] DEBUG multithread.SenderThread - Sending utils.Answer@21aa4d53
+2023-05-12 11:19:17.291 [ForkJoinPool.commonPool-worker-5] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:19:17.291 [ForkJoinPool.commonPool-worker-5] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:20:36.120 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:20:36.122 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:20:36.124 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@608aa446
+2023-05-12 11:20:36.125 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:20:36.126 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:20:36.132 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:20:36.133 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:20:36.134 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@6e4d5627
+2023-05-12 11:20:36.136 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:20:36.136 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:20:36.172 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:20:36.173 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:20:36.173 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@6a72cf36
+2023-05-12 11:20:36.174 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:20:36.174 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:20:36.177 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"INITIALIZATION","message":"","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:20:36.178 [pool-2-thread-3] TRACE multithread.ReceiverThread - Received initialization request
+2023-05-12 11:20:36.180 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@2f705c1c
+2023-05-12 11:20:36.180 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:20:36.180 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:20:42.044 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:20:42.044 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:20:42.044 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@1aed7520
+2023-05-12 11:20:42.045 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:20:42.045 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:20:42.047 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"admin","password":"admin","sender":"/127.0.0.1:6790"}}
+2023-05-12 11:20:42.047 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:20:42.047 [pool-2-thread-3] INFO  serverUtils.FileManager - Loading from database
+2023-05-12 11:20:42.125 [pool-2-thread-3] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-12 11:20:42.446 [pool-2-thread-3] DEBUG users.UserManager - User admin authorized
+2023-05-12 11:20:42.449 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@1e95f434
+2023-05-12 11:20:42.450 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:20:42.450 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg3OTk0Mn0.mSX98M8-DpXVEgRFFj94vrb20yzJTocdFoCsUbhjHW8","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:20:48.367 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:20:48.368 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:20:48.368 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@62e283af
+2023-05-12 11:20:48.369 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:20:48.369 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:20:48.370 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:20:48.371 [pool-2-thread-3] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:20:48.371 [ForkJoinPool.commonPool-worker-10] DEBUG multithread.SenderThread - Sending utils.Answer@4f5fa353
+2023-05-12 11:20:48.371 [ForkJoinPool.commonPool-worker-10] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:20:48.371 [ForkJoinPool.commonPool-worker-10] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:21:53.505 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:21:53.507 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:21:53.508 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@565f2fc1
+2023-05-12 11:21:53.510 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:21:53.510 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:21:53.516 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:21:53.517 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:21:53.518 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@5898db7a
+2023-05-12 11:21:53.519 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:21:53.519 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:21:53.581 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:21:53.582 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:21:53.582 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@5ca744b1
+2023-05-12 11:21:53.584 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:21:53.585 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:21:53.591 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"INITIALIZATION","message":"","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:21:53.592 [pool-2-thread-4] TRACE multithread.ReceiverThread - Received initialization request
+2023-05-12 11:21:53.595 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@19a5d141
+2023-05-12 11:21:53.595 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:21:53.596 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:21:58.154 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:21:58.154 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:21:58.155 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@362bc493
+2023-05-12 11:21:58.155 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:21:58.155 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:21:58.157 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"admin","password":"admin","sender":"/127.0.0.1:6790"}}
+2023-05-12 11:21:58.157 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:21:58.157 [pool-2-thread-4] INFO  serverUtils.FileManager - Loading from database
+2023-05-12 11:21:58.258 [pool-2-thread-4] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-12 11:21:58.504 [pool-2-thread-4] DEBUG users.UserManager - User admin authorized
+2023-05-12 11:21:58.506 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@28768a27
+2023-05-12 11:21:58.507 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:21:58.507 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg4MDAxOH0.if_DFMs4KB2nItdtaXsTzm72trptsW-bNwDGlaISHak","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:22:29.087 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:22:29.087 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:22:29.088 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@4e12c154
+2023-05-12 11:22:29.088 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:22:29.088 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:22:29.089 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"/127.0.0.1:6790"}}
+2023-05-12 11:22:29.089 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: /127.0.0.1:6790
+2023-05-12 11:22:29.089 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@798a2e0e
+2023-05-12 11:22:29.090 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:22:29.090 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-12 11:22:29.107 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-12 11:22:29.108 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-12 11:22:29.108 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@11ed72f0
+2023-05-12 11:22:29.108 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-12 11:22:29.108 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-12 11:22:29.110 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"logout","args":{"sender":"/127.0.0.1:6790"},"token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY4Mzg4MDAxOH0.if_DFMs4KB2nItdtaXsTzm72trptsW-bNwDGlaISHak"}
+2023-05-12 11:22:29.110 [pool-2-thread-4] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-12 11:22:29.110 [ForkJoinPool.commonPool-worker-11] DEBUG multithread.SenderThread - Sending utils.Answer@11ed72f0
+2023-05-12 11:22:29.111 [ForkJoinPool.commonPool-worker-11] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-12 11:22:29.111 [ForkJoinPool.commonPool-worker-11] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}

@@ -4,6 +4,7 @@ import clientUtils.Console
 import tornadofx.*
 
 import tornadofx.*
+import kotlin.system.exitProcess
 
 class MainView : View() {
     private val client = Console("localhost", 8061)
@@ -45,6 +46,16 @@ class MainView : View() {
             }
             root.clear()
             root.add(startButton)
+        }
+
+        if (interactiveModeStarted) {
+            val exitButton = button ("Exit") {
+                action {
+                    exitProcess(1)
+                }
+            }
+            root.clear()
+            root.add(exitButton)
         }
     }
 }

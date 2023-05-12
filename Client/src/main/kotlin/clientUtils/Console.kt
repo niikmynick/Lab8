@@ -37,6 +37,8 @@ class Console(host: String, port: Int) {
 
     private val logger: Logger = LogManager.getLogger(Console::class.java)
 
+    var executeFlag: Boolean? = true
+
     /**
      * Contains the token that authorizes the client to execute commands in the server. It is initialized as an empty string.
      */
@@ -167,7 +169,6 @@ class Console(host: String, port: Int) {
      * Starts the interactive mode which asks for prompt until an [Exit] command is executed
      */
     fun startInteractiveMode() {
-        var executeFlag: Boolean? = true
         outputManager.surePrint("Waiting for user prompt ...")
 
         do {
@@ -192,5 +193,9 @@ class Console(host: String, port: Int) {
             }
 
         } while (executeFlag != false)
+    }
+
+    fun stop() {
+        executeFlag = true
     }
 }
