@@ -1,5 +1,6 @@
+import application.GUI
 import clientUtils.Console
-
+import tornadofx.*
 
 fun client(actions: Console.() -> Unit) {
     val console = Console("localhost", 8061)
@@ -12,13 +13,18 @@ fun client(actions: Console.() -> Unit) {
 
 fun main() {
 
-    client {
-        connect()
-        authorize()
-        if (authorized) {
-            startInteractiveMode()
-        }
+    launch<GUI>()
 
-    }
+//
+//    client {
+//
+//        connect()
+//
+//        authorize()
+//        if (authorized) {
+//            startInteractiveMode()
+//        }
+//
+//    }
 
 }

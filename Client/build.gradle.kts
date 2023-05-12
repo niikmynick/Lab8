@@ -3,6 +3,7 @@ plugins {
     application
     kotlin("plugin.serialization") version "1.8.0"
     id("application")
+    id("org.openjfx.javafxplugin") version "0.0.8"
 }
 
 repositories {
@@ -20,6 +21,9 @@ dependencies {
     implementation("no.tornado:tornadofx:1.7.20")
 }
 
+javafx {
+    modules("javafx.controls", "javafx.fxml", "javafx.graphics")
+}
 tasks.test {
     useJUnitPlatform()
 }
