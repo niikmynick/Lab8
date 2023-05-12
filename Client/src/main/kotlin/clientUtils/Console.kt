@@ -164,7 +164,7 @@ class Console(host: String, port: Int) {
         logger.debug("Sent authorization query")
         if (answer.answerType == AnswerType.ERROR) {
             outputManager.println(answer.message)
-            authorize()
+            authorized = false
         } else {
             logger.debug("Authorized")
             authorized = true
