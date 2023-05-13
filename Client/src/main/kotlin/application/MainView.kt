@@ -92,6 +92,7 @@ class MainView : View() {
                 root.alignment = Pos.TOP_LEFT
                 showMenu()
             } else {
+                root.clear()
                 showLoginDialog()
             }
 
@@ -108,7 +109,9 @@ class MainView : View() {
 
         val consoleMenu = Menu()
         val settingsMenu = Menu()
-        val separateMenu = Menu()
+        val racoon = Menu()
+        val collectionMenu = Menu()
+
 
         consoleMenu.button("Console") {
             action {
@@ -126,14 +129,22 @@ class MainView : View() {
             }
         }
 
-        separateMenu.button("Separate Menu") {
+        racoon.button("Racoon") {
             action {
                 root.clear()
                 showMenu()
-                showSeparateMenu()
+                showRacoon()
             }
         }
-        menuBar.menus.addAll(consoleMenu, settingsMenu, separateMenu)
+
+        collectionMenu.button("Collection") {
+            action {
+                root.clear()
+                showMenu()
+                showCollection()
+            }
+        }
+        menuBar.menus.addAll(consoleMenu, settingsMenu, racoon)
 
         root.add(menuBar)
     }
@@ -170,7 +181,15 @@ class MainView : View() {
         root.add(settingsWindow)
     }
 
-    private fun showSeparateMenu() {
+    private fun showCollection() {
+        val collectionWindow = VBox()
+        val collectionText = Text("Collection")
+        collectionText.style = "-fx-font-size: 24px;"
+        collectionText.style = "-fx-font_family: 'IBM Plex Sans';"
+        collectionWindow.add(collectionText)
+        root.add(collectionWindow)
+    }
+    private fun showRacoon() {
         val image = Image("file:Client/src/main/resources/racoon.jpeg", 600.0, 300.0, true, true)
         root.imageview(image)
     }

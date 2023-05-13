@@ -2728,3 +2728,35 @@
 2023-05-12 19:12:52.314 [ForkJoinPool.commonPool-worker-3] DEBUG multithread.SenderThread - Sending utils.Answer@4c945abe
 2023-05-12 19:12:52.315 [ForkJoinPool.commonPool-worker-3] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
 2023-05-12 19:12:52.315 [ForkJoinPool.commonPool-worker-3] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"{\"commands\":{\"info\":\"Prints info about the collection (type, creation date, amount of elements)\",\"show\":\"Prints all elements of the collection\",\"add\":\"Adds a new element into the collection\",\"update_id\":\"Updates values of the element with the provided id\",\"remove_by_id\":\"Deletes the element with the provided id\",\"clear\":\"Clears all elements in the collection\",\"add_if_min\":\"Adds a new element into the collection if its value is lower than the lowest element in the collection\",\"remove_greater\":\"Deletes from collection all elements greater than provided\",\"remove_lower\":\"Deletes from collection all elements lower than provided\",\"remove_any_by_chapter\":\"Deletes an element with a provided chapter value\",\"count_by_melee_weapon\":\"Prints the amount of elements with the provided weapon\",\"filter_by_chapter\":\"Prints elements with the provided chapter\",\"filter_by_weapon\":\"Prints elements with the provided weapon\"},\"arguments\":{\"info\":\"{}\",\"show\":\"{}\",\"add\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"update_id\":\"{\\\"id\\\":\\\"Long\\\",\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_by_id\":\"{\\\"id\\\":\\\"Long\\\"}\",\"clear\":\"{}\",\"add_if_min\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_greater\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_lower\":\"{\\\"spaceMarine\\\":\\\"SpaceMarine\\\"}\",\"remove_any_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"count_by_melee_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\",\"filter_by_chapter\":\"{\\\"chapter\\\":\\\"Chapter\\\"}\",\"filter_by_weapon\":\"{\\\"weapon\\\":\\\"MeleeWeapon\\\"}\"}}","receiver":"/127.0.0.1:6791"}
+2023-05-13 15:31:32.679 [main] INFO  serverUtils.Console - Initializing the server
+2023-05-13 15:31:32.684 [main] DEBUG serverUtils.Console - Command 'info' registered
+2023-05-13 15:31:32.684 [main] DEBUG serverUtils.Console - Command 'show' registered
+2023-05-13 15:31:32.685 [main] DEBUG serverUtils.Console - Command 'add' registered
+2023-05-13 15:31:32.685 [main] DEBUG serverUtils.Console - Command 'update_id' registered
+2023-05-13 15:31:32.685 [main] DEBUG serverUtils.Console - Command 'remove_by_id' registered
+2023-05-13 15:31:32.685 [main] DEBUG serverUtils.Console - Command 'clear' registered
+2023-05-13 15:31:32.687 [main] DEBUG serverUtils.Console - Command 'add_if_min' registered
+2023-05-13 15:31:32.687 [main] DEBUG serverUtils.Console - Command 'remove_greater' registered
+2023-05-13 15:31:32.687 [main] DEBUG serverUtils.Console - Command 'remove_lower' registered
+2023-05-13 15:31:32.688 [main] DEBUG serverUtils.Console - Command 'remove_any_by_chapter' registered
+2023-05-13 15:31:32.688 [main] DEBUG serverUtils.Console - Command 'count_by_melee_weapon' registered
+2023-05-13 15:31:32.689 [main] DEBUG serverUtils.Console - Command 'filter_by_chapter' registered
+2023-05-13 15:31:32.689 [main] DEBUG serverUtils.Console - Command 'filter_by_weapon' registered
+2023-05-13 15:31:32.689 [main] INFO  serverUtils.FileManager - Loading from database
+2023-05-13 15:31:32.825 [main] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-13 15:31:32.825 [main] INFO  serverUtils.Console - Collection loaded
+2023-05-13 15:31:32.828 [main] INFO  serverUtils.ConnectionManager - Server started on localhost/127.0.0.1:8072
+2023-05-13 15:31:32.883 [main] INFO  serverUtils.Console - The server is ready to receive commands
+2023-05-13 15:32:28.980 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-13 15:32:29.017 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-13 15:32:29.018 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@462b9bc9
+2023-05-13 15:32:29.019 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-13 15:32:29.032 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-13 15:32:29.046 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-13 15:32:29.049 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-13 15:32:29.049 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-13 15:32:29.195 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 0 elements successfully
+2023-05-13 15:32:29.518 [pool-2-thread-1] DEBUG users.UserManager - User test registered
+2023-05-13 15:32:29.980 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@7c8e052b
+2023-05-13 15:32:29.981 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-13 15:32:29.982 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Registered","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjgzOTgxNDQ5fQ.1gX9sMh8L_ipA9u6hTDm8yXTHVU4AZp3MmTrCS9YAPU","receiver":"/127.0.0.1:6790"}
