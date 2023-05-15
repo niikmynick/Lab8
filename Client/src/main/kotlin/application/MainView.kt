@@ -8,22 +8,25 @@ import javafx.scene.image.Image
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
+import kotlinx.coroutines.*
 import tornadofx.*
+import kotlin.concurrent.thread
 
 class MainView : View() {
     private val console = Console("localhost", 8061)
-
     override val root = VBox()
 
     init {
         showWelcome()
     }
 
-    private fun showWelcome() {
+    private fun showWelcome() = runBlocking {
         val loginText = Text("Hello, Before we start you have to log in to your account")
         val loginButton = button ("Log in") {
             action {
-                showLoginDialog()
+                while (!console.authorized) {
+                    runBlocking { showLoginDialog() }
+                }
             }
         }
 
@@ -39,7 +42,7 @@ class MainView : View() {
         root.add(loginButton)
     }
 
-    private fun showLoginDialog() {
+    private suspend fun showLoginDialog() = coroutineScope {
         // Create a new dialog for user to enter login details
         val dialog = Dialog<Pair<String, String>>()
         dialog.title = "Log in"
@@ -86,16 +89,18 @@ class MainView : View() {
 
         // Update the UI based on whether the user is logged in or not
         if (result.isPresent) {
-            console.authorize(result.get().first, result.get().second)
+            val authorization = thread {
+                console.authorize(result.get().first, result.get().second)
+            }
+            authorization.join(5000)
             if (console.authorized) {
                 root.clear()
                 root.alignment = Pos.TOP_LEFT
                 showMenu()
             } else {
                 root.clear()
-                showLoginDialog()
+                //showLoginDialog()
             }
-
         }
     }
 

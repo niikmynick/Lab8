@@ -28,7 +28,7 @@ import kotlin.concurrent.timerTask
  */
 class Console {
     // connection
-    private val connectionManager = ConnectionManager()
+    val connectionManager = ConnectionManager()
     private val selector = Selector.open()
 
     // collection
@@ -180,7 +180,6 @@ class Console {
 
     fun stop() {
         logger.info("Closing server")
-
         executeFlag = false
 
         selector.wakeup()

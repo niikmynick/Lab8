@@ -26,6 +26,7 @@ fun main() {
                 when (readlnOrNull()) {
                     "exit" -> {
                         save()
+                        connectionManager.registrationRequest(gatewayHost, gatewayPort, "Closing Server")
                         stop()
                         break
                     }
@@ -39,7 +40,7 @@ fun main() {
         start {
 
             startServer(host, port)
-            registrationRequest(gatewayHost, gatewayPort)
+            registrationRequest(gatewayHost, gatewayPort, "Registration request")
 
         }
 

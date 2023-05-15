@@ -158,6 +158,10 @@ class Console(host: String, port: Int) {
         }
     }
 
+    /**
+     * From received login data sends an authorization request to the server
+     * This function does not guarantee authorization.
+     */
     fun authorize(username: String, password: String) {
         val query = Query(QueryType.AUTHORIZATION, "", mutableMapOf("username" to username, "password" to password))
         val answer = connectionManager.checkedSendReceive(query)
@@ -167,8 +171,8 @@ class Console(host: String, port: Int) {
             authorized = false
         } else {
             logger.debug("Authorized")
-            authorized = true
             token = answer.token
+            authorized = true
         }
     }
 
