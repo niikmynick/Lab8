@@ -3,7 +3,6 @@ package application
 import basicClasses.SpaceMarine
 import clientUtils.Console
 import javafx.application.Platform
-import javafx.collections.ObservableSet
 import javafx.geometry.Pos
 import javafx.scene.control.*
 import javafx.scene.image.Image
@@ -91,7 +90,7 @@ class MainView : View() {
 
         // Update the UI based on whether the user is logged in or not
         if (result.isPresent) {
-            console.authorized = true //CHANGE. USED ONLY FOR DEBUGGING PURPOSES
+            console.authorized = true // TODO: CHANGE. USED ONLY FOR DEBUGGING PURPOSES
             val authorization = thread {
                 console.authorize(result.get().first, result.get().second)
             }
