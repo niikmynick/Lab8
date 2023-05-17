@@ -1,7 +1,9 @@
 package application
 
+import basicClasses.SpaceMarine
 import clientUtils.Console
 import javafx.application.Platform
+import javafx.collections.ObservableSet
 import javafx.geometry.Pos
 import javafx.scene.control.*
 import javafx.scene.image.Image
@@ -89,6 +91,7 @@ class MainView : View() {
 
         // Update the UI based on whether the user is logged in or not
         if (result.isPresent) {
+            console.authorized = true //CHANGE. USED ONLY FOR DEBUGGING PURPOSES
             val authorization = thread {
                 console.authorize(result.get().first, result.get().second)
             }
@@ -149,7 +152,7 @@ class MainView : View() {
                 showCollection()
             }
         }
-        menuBar.menus.addAll(consoleMenu, settingsMenu, racoon)
+        menuBar.menus.addAll(consoleMenu, settingsMenu, racoon, collectionMenu)
 
         root.add(menuBar)
     }
@@ -186,9 +189,42 @@ class MainView : View() {
         root.add(settingsWindow)
     }
 
+
+    class SpaceMarineModel : ItemViewModel<SpaceMarine>() {
+        val id = bind {item?.getId()?.toProperty()}
+        val name = bind {item?.getName()?.toProperty()}
+        val coordinates = bind {item?.getCoordinates()?.toProperty()}
+        val creationDate = bind {item?.getCreationDate()?.toProperty()}
+        val health = bind {item?.getHealth()?.toProperty()}
+        val loyal = bind {item?.getLoyalty()?.toProperty()}
+        val category = bind {item?.getCategory()?.toProperty()}
+        val meleeWeapon = bind {item?.getWeapon()?.toProperty()}
+        val chapter = bind {item?.getChapter()?.toProperty()}
+    }
     private fun showCollection() {
+        val model = SpaceMarineModel()
         val collectionWindow = VBox()
         val collectionText = Text("Collection")
+        val collection = listOf<SpaceMarine>().toObservable()
+        collectionWindow.tableview<SpaceMarine> {
+            column("Id", SpaceMarine::getId)
+            column("Name", SpaceMarine::getName)
+            column("Coordinates", SpaceMarine::getCoordinates)
+            column("Creation Date", SpaceMarine::getCreationDate)
+            column("Health", SpaceMarine::getHealth)
+            column("Loyalty", SpaceMarine::getLoyalty)
+            column("Category", SpaceMarine::getCategory)
+            column("Melee Weapon", SpaceMarine::getWeapon)
+            column("Chapter", SpaceMarine::getChapter)
+
+            bindSelected(model)
+            smartResize()
+        }
+        collectionWindow.button("Update Collection") {
+            action {
+                //TODO: get collection from server
+            }
+        }
         collectionText.style = "-fx-font-size: 24px;"
         collectionText.style = "-fx-font_family: 'IBM Plex Sans';"
         collectionWindow.add(collectionText)
