@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
+import javafx.scene.shape.Rectangle
 import javafx.scene.text.Text
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
@@ -27,17 +28,18 @@ class MainView : View() {
 
     init {
         root.background = Background(BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY))
-        showMenu()
+        welcomeView()
     }
 
-    private fun headPane(needAccountIcon: Boolean) : Pane {
+    private fun headPane(needAccountIcon: Boolean): Pane {
 
         val headBar = Pane()
         headBar.setPrefSize(1440.0, 64.0)
         headBar.style = "-fx-background-color: #000000; -fx-border-radius: 20px;"
 
         val appNameText = Text("Space Marine Collection")
-        appNameText.style = "-fx-text-alignment: left; -fx-vertical-alignment: top; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #ffffff;"
+        appNameText.style =
+            "-fx-text-alignment: left; -fx-vertical-alignment: top; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #ffffff;"
         appNameText.layoutX = 20.0
         appNameText.layoutY = 40.0
 
@@ -61,7 +63,7 @@ class MainView : View() {
         return headBar
     }
 
-    private fun leftBox() : VBox {
+    private fun leftBox(): VBox {
 
         val homeButton = Button()
         homeButton.imageview("file:Client/src/main/resources/home_icon.png") {
@@ -105,24 +107,28 @@ class MainView : View() {
         return leftMenu
     }
 
-    private fun block(title: String, description: String, buttonText: String, buttonAction: () -> Unit) : Pane {
+    private fun block(title: String, description: String, buttonText: String, buttonAction: () -> Unit): Pane {
 
         val block = Pane()
         block.setPrefSize(436.0, 211.0)
-        block.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+        block.style =
+            "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
 
         val blockTitle = Text(title)
-        blockTitle.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
+        blockTitle.style =
+            "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
         blockTitle.layoutX = 28.0
         blockTitle.layoutY = 52.0
 
         val blockDescription = Text(description)
-        blockDescription.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
+        blockDescription.style =
+            "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
         blockDescription.layoutX = 28.0
         blockDescription.layoutY = 96.0
 
         val blockButton = Button(buttonText)
-        blockButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000;"
+        blockButton.style =
+            "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000;"
         blockButton.layoutX = 28.0
         blockButton.layoutY = 140.0
         blockButton.setPrefSize(160.0, 42.0)
@@ -151,23 +157,27 @@ class MainView : View() {
         welcomePane.layoutY = 64.0
 
         val loginText = Text("Hello,\nBefore we start you have to log in to your account")
-        loginText.style = "-fx-text-alignment: left; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        loginText.style =
+            "-fx-text-alignment: left; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
         loginText.wrappingWidth = 600.0
         loginText.x = 420.0
         loginText.y = 388.0
 
         val loginButton = Button("Authorize")
-        loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        loginButton.style =
+            "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         loginButton.layoutX = 420.0
         loginButton.layoutY = 470.0
         loginButton.setPrefSize(160.0, 42.0)
 
         loginButton.setOnMouseEntered {
-            loginButton.style = "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            loginButton.style =
+                "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         loginButton.setOnMouseExited {
-            loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            loginButton.style =
+                "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         loginButton.setOnMouseClicked {
@@ -191,51 +201,60 @@ class MainView : View() {
 
         val loginPane = Pane()
         loginPane.setPrefSize(450.0, 480.0)
-        loginPane.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+        loginPane.style =
+            "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
         loginPane.layoutX = 495.0
         loginPane.layoutY = 242.0
 
         val title = Text("Auth")
-        title.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        title.style =
+            "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         title.x = 28.0
         title.y = 52.0
 
         val nameInvoke = Text("Username")
-        nameInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        nameInvoke.style =
+            "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         nameInvoke.x = 28.0
         nameInvoke.y = 120.0
 
         val username = TextField()
         username.promptText = "Enter your username here"
-        username.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        username.style =
+            "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         username.layoutX = 28.0
         username.layoutY = 140.0
         username.setPrefSize(394.0, 42.0)
 
         val passwordInvoke = Text("Password")
-        passwordInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        passwordInvoke.style =
+            "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         passwordInvoke.x = 28.0
         passwordInvoke.y = 230.0
 
         val password = PasswordField()
         password.promptText = "Enter your password here"
-        password.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        password.style =
+            "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         password.layoutX = 28.0
         password.layoutY = 250.0
         password.setPrefSize(394.0, 42.0)
 
         val loginButton = Button("Log In")
-        loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        loginButton.style =
+            "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         loginButton.layoutX = 145.0
         loginButton.layoutY = 341.0
         loginButton.setPrefSize(160.0, 42.0)
 
         loginButton.setOnMouseEntered {
-            loginButton.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            loginButton.style =
+                "-fx-text-fill: #777; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         loginButton.setOnMouseExited {
-            loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            loginButton.style =
+                "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         loginButton.setOnMouseClicked {
@@ -251,16 +270,19 @@ class MainView : View() {
         }
 
         val registerInvoke = Text("Don't have an account?\nRegister")
-        registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        registerInvoke.style =
+            "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
         registerInvoke.x = 152.0
         registerInvoke.y = 421.0
 
         registerInvoke.setOnMouseEntered {
-            registerInvoke.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+            registerInvoke.style =
+                "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         }
 
         registerInvoke.setOnMouseExited {
-            registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+            registerInvoke.style =
+                "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         }
 
         registerInvoke.setOnMouseClicked {
@@ -289,51 +311,60 @@ class MainView : View() {
 
         val registerPane = Pane()
         registerPane.setPrefSize(450.0, 480.0)
-        registerPane.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+        registerPane.style =
+            "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
         registerPane.layoutX = 495.0
         registerPane.layoutY = 242.0
 
         val title = Text("Auth")
-        title.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        title.style =
+            "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         title.x = 28.0
         title.y = 52.0
 
         val nameInvoke = Text("Username")
-        nameInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        nameInvoke.style =
+            "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         nameInvoke.x = 28.0
         nameInvoke.y = 120.0
 
         val username = TextField()
         username.promptText = "Enter your username here"
-        username.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        username.style =
+            "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         username.layoutX = 28.0
         username.layoutY = 140.0
         username.setPrefSize(394.0, 42.0)
 
         val passwordInvoke = Text("Password")
-        passwordInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        passwordInvoke.style =
+            "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         passwordInvoke.x = 28.0
         passwordInvoke.y = 230.0
 
         val password = PasswordField()
         password.promptText = "Enter your password here"
-        password.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        password.style =
+            "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
         password.layoutX = 28.0
         password.layoutY = 250.0
         password.setPrefSize(394.0, 42.0)
 
         val registerButton = Button("Sign In")
-        registerButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        registerButton.style =
+            "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         registerButton.layoutX = 145.0
         registerButton.layoutY = 341.0
         registerButton.setPrefSize(160.0, 42.0)
 
         registerButton.setOnMouseEntered {
-            registerButton.style = "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            registerButton.style =
+                "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         registerButton.setOnMouseExited {
-            registerButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+            registerButton.style =
+                "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
         registerButton.setOnMouseClicked {
@@ -349,16 +380,19 @@ class MainView : View() {
         }
 
         val registerInvoke = Text("Already have an account?\nLog In")
-        registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        registerInvoke.style =
+            "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
         registerInvoke.x = 152.0
         registerInvoke.y = 421.0
 
         registerInvoke.setOnMouseEntered {
-            registerInvoke.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+            registerInvoke.style =
+                "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         }
 
         registerInvoke.setOnMouseExited {
-            registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+            registerInvoke.style =
+                "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         }
 
         registerInvoke.setOnMouseClicked {
@@ -391,12 +425,14 @@ class MainView : View() {
         consoleBlock.layoutY = 84.0
         root.add(consoleBlock)
 
-        val settingsBlock = block("Settings", "Set up your account and application preferences", "Open settings", { showSettings() })
+        val settingsBlock =
+            block("Settings", "Set up your account and application preferences", "Open settings", { showSettings() })
         settingsBlock.layoutX = 528.0
         settingsBlock.layoutY = 84.0
         root.add(settingsBlock)
 
-        val collectionBlock = block("Collection", "Check out all existing Space Marines", "Go to the collection", { showCollection() })
+        val collectionBlock =
+            block("Collection", "Check out all existing Space Marines", "Go to the collection", { showCollection() })
         collectionBlock.layoutX = 984.0
         collectionBlock.layoutY = 84.0
         root.add(collectionBlock)
@@ -408,8 +444,8 @@ class MainView : View() {
     }
 
     private fun showConsole() {
-//        console.initialize()
-//        console.registerBasicCommands()
+        console.initialize()
+        console.registerBasicCommands()
 
         root.clear()
 
@@ -419,49 +455,68 @@ class MainView : View() {
         val leftMenu = leftBox()
         root.add(leftMenu)
 
+        val consoleTitle = Text("Console")
+        consoleTitle.style =
+            "-fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        consoleTitle.x = 72.0
+        consoleTitle.y = 84.0
+
         val outputArea = TextArea()
         outputArea.isEditable = false
         outputArea.isWrapText = true
+        outputArea.style =
+            "-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px; -fx-position: absolute;"
+        outputArea.setPrefSize(1256.0, 590.0)
+        // make corners rounded
+        outputArea.setShape(Rectangle(20.0, 20.0))
 
         val inputField = TextField()
+        inputField.style =
+            "-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px; -fx-position: absolute;"
+        inputField.setPrefSize(1256.0, 42.0)
 
-        val commandWindow = VBox()
-        commandWindow.children.addAll(outputArea, inputField)
+        val commandWindow = VBox(20.0, consoleTitle, outputArea, inputField)
+        commandWindow.layoutX = 72.0
+        commandWindow.layoutY = 84.0
+        commandWindow.setPrefSize(1200.0, 600.0)
+        commandWindow.style =
+            "-fx-background-color: #ffffff; -fx-position: absolute;"
 
-        val scanner = Scanner(ByteArrayInputStream(inputField.text.toByteArray()))
+//        val scanner = Scanner(ByteArrayInputStream(inputField.text.toByteArray()))
 
         // Handle user input
         inputField.setOnAction {
-            do {
-                try {
-                    outputArea.appendText("$ ")
+            runBlocking {
+                do {
+                    try {
+                        outputArea.appendText("$ ")
 
-                    val query = inputField.text.trim().split(" ")
-                    inputField.clear()
+                        val query = inputField.text.trim().split(" ")
+                        inputField.clear()
 
-                    outputArea.appendText("$query\n")
+                        outputArea.appendText("$query\n")
 
-                    if (query[0] != "") {
-                        console.checkConnection()
-                        console.executeCommand(query)
+                        if (query[0] != "") {
+                            console.checkConnection()
+                            console.executeCommand(query)
+                        }
+
+                    } catch (e: InvalidInputException) {
+                        outputArea.appendText(e.message)
+//                    logger.warn(e.message)
+                    } catch (e: NotAuthorized) {
+                        runBlocking {
+                            loginView()
+                        }
+                    } catch (e: Exception) {
+                        outputArea.appendText(e.message.toString())
+//                    logger.warn(e.message)
                     }
 
-                } catch (e: InvalidInputException) {
-                    outputArea.appendText(e.message)
-//                    logger.warn(e.message)
-                } catch (e: NotAuthorized) {
-                    runBlocking {
-                        loginView()
-                    }
-                }
-                catch (e: Exception) {
-                    outputArea.appendText(e.message.toString())
-//                    logger.warn(e.message)
-                }
+                } while (console.executeFlag != false)
 
-            } while (console.executeFlag != false)
-
-            // send the command to the server and get the response
+                // send the command to the server and get the response
+            }
         }
 
         root.add(commandWindow)
@@ -486,15 +541,15 @@ class MainView : View() {
 
 
     class SpaceMarineModel() : ItemViewModel<SpaceMarine>() {
-        val id = bind {item?.getId()?.toProperty()}
-        val name = bind {item?.getName()?.toProperty()}
-        val coordinates = bind {item?.getCoordinates()?.toProperty()}
-        val creationDate = bind {item?.getCreationDate()?.toProperty()}
-        val health = bind {item?.getHealth()?.toProperty()}
-        val loyal = bind {item?.getLoyalty()?.toProperty()}
-        val category = bind {item?.getCategory()?.toProperty()}
-        val meleeWeapon = bind {item?.getWeapon()?.toProperty()}
-        val chapter = bind {item?.getChapter()?.toProperty()}
+        val id = bind { item?.getId()?.toProperty() }
+        val name = bind { item?.getName()?.toProperty() }
+        val coordinates = bind { item?.getCoordinates()?.toProperty() }
+        val creationDate = bind { item?.getCreationDate()?.toProperty() }
+        val health = bind { item?.getHealth()?.toProperty() }
+        val loyal = bind { item?.getLoyalty()?.toProperty() }
+        val category = bind { item?.getCategory()?.toProperty() }
+        val meleeWeapon = bind { item?.getWeapon()?.toProperty() }
+        val chapter = bind { item?.getChapter()?.toProperty() }
     }
 
     class SpaceMarineController() : Controller() {
@@ -514,19 +569,19 @@ class MainView : View() {
         val controller = find(SpaceMarineController::class)
 
         val collectionWindow = VBox()
-        collectionWindow.tableview(controller.collection) {
+
         collectionWindow.style = "-fx-background-color: #ffffff;"
         collectionWindow.layoutX = 72.0
         collectionWindow.layoutY = 84.0
 
         val collectionTitle = Text("Collection")
-        collectionTitle.style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        collectionTitle.style =
+            "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
         collectionTitle.x = 72.0
         collectionTitle.y = 84.0
         collectionWindow.add(collectionTitle)
 
-        val collection = listOf<SpaceMarine>().toObservable()
-        collectionWindow.tableview<SpaceMarine> {
+        val collectionView = tableview<SpaceMarine> {
             column("Id", SpaceMarine::getId)
             column("Name", SpaceMarine::getName)
             column("Coordinates", SpaceMarine::getCoordinates)
@@ -539,21 +594,34 @@ class MainView : View() {
 
             bindSelected(controller.model)
             smartResize()
-        }.style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-position: absolute;"
-        collectionWindow.button("Update Collection") {
-            action {
-                try {
-                    val input = console.loadCollection().keys.asSequence()
-                    val collection = input.map {
-                        Json.decodeFromString(SpaceMarine.serializer(), it)
-                    }
-                    controller.collection.setAll(collection.toList().toObservable())
-                    println(controller.collection)
-                } catch (e: NotAuthorized) {
-                    welcomeView()
+        }
+
+        collectionView.style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000;"
+        collectionView.layoutX = 92.0
+        collectionView.layoutY = 146.0
+        collectionView.columnResizePolicy = SmartResize.POLICY
+        collectionView.setPrefSize(1000.0, 600.0)
+
+        val updateButton = Button("Update collection")
+        updateButton.style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+        updateButton.layoutX = 92.0
+        updateButton.layoutY = 756.0
+
+        updateButton.setOnMouseClicked {
+            try {
+                val input = console.loadCollection().keys.asSequence()
+                val collection = input.map {
+                    Json.decodeFromString(SpaceMarine.serializer(), it)
                 }
+                controller.collection = collection.toList().toObservable()
+                println(controller.collection)
+                collectionView.items = controller.collection
+            } catch (e: NotAuthorized) {
+                welcomeView()
             }
         }
+        collectionWindow.add(collectionView)
+        collectionWindow.add(updateButton)
 
         root.add(collectionWindow)
     }
@@ -571,6 +639,6 @@ class MainView : View() {
         image.x = 72.0
         image.y = 84.0
         root.add(image)
-    }
 
+    }
 }
