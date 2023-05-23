@@ -23,7 +23,7 @@ class Console(host: String, port: Int) {
     private val outputManager = OutputManager()
     private val inputManager = InputManager(outputManager)
 
-    private val commandInvoker = CommandInvoker(outputManager)
+    val commandInvoker = CommandInvoker(outputManager)
     private val commandReceiver = CommandReceiver(commandInvoker, outputManager, inputManager, connectionManager)
 
     private val jsonCreator = JsonCreator()
@@ -73,7 +73,7 @@ class Console(host: String, port: Int) {
      * If the connection is active, it returns true.
      * If the connection is not active, it logs the event, prompts the user to reconnect and returns false.
      */
-    private fun checkConnection(): Boolean {
+    fun checkConnection(): Boolean {
         return if (connectionManager.connected()) {
             true
         } else {
@@ -87,7 +87,7 @@ class Console(host: String, port: Int) {
     /**
      * Registers the basic commands that can be executed without the server
      */
-    private fun registerBasicCommands() {
+    fun registerBasicCommands() {
         commandInvoker.register("help", Help(commandReceiver))
         commandInvoker.register("exit", Exit(connectionManager))
         commandInvoker.register("execute_script", ScriptFromFile(commandReceiver))
@@ -98,7 +98,7 @@ class Console(host: String, port: Int) {
      * Sends an Initialization request to the server, then receives and registers
      * all commands with their respective needed arguments.
      */
-    private fun initialize() {
+    fun initialize() {
         val query = Query(QueryType.INITIALIZATION, "", mutableMapOf())
         val answer = connectionManager.checkedSendReceive(query)
         logger.debug("Sent initialization query")
@@ -176,6 +176,10 @@ class Console(host: String, port: Int) {
         }
     }
 
+    fun executeCommand(query: List<String>) {
+        commandInvoker.executeCommand(query, token)
+        executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
+    }
     /**
      * Starts the interactive mode which asks for prompt until an [Exit] command is executed
      */

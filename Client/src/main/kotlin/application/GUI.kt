@@ -17,7 +17,7 @@ class GUI : App(MainView::class) {
         val image = Image("file:Client/src/main/resources/app_logo.jpg")
         stage.icons.add(image)
 
-        val primaryScene = Scene(MainView().root, 720.0, 450.0)
+        val primaryScene = Scene(MainView().root, 1440.0, 900.0)
         stage.scene = primaryScene
         stage.isResizable = false
 

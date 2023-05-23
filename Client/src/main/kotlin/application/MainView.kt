@@ -2,45 +2,98 @@ package application
 
 import basicClasses.SpaceMarine
 import clientUtils.Console
+import exceptions.InvalidInputException
+import exceptions.NotAuthorized
 import javafx.application.Platform
+import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
+import javafx.scene.Parent
 import javafx.scene.control.*
 import javafx.scene.image.Image
+import javafx.scene.image.ImageView
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
+import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import kotlinx.coroutines.*
 import tornadofx.*
+import java.io.ByteArrayInputStream
 import kotlin.concurrent.thread
+import java.util.*
 
 class MainView : View() {
     private val console = Console("localhost", 8061)
-    override val root = VBox()
+
+    override var root = VBox()
 
     init {
+        root.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px;"
         showWelcome()
     }
 
     private fun showWelcome() = runBlocking {
-        val loginText = Text("Hello, Before we start you have to log in to your account")
-        val loginButton = button ("Log in") {
-            action {
-                while (!console.authorized) {
-                    runBlocking { showLoginDialog() }
+
+        val headBar = Pane()
+        headBar.setPrefSize(1440.0, 64.0)
+        headBar.style = "-fx-background-color: #000000; -fx-border-radius: 20px;"
+
+        val appNameText = Text("Space Marine Collection")
+        appNameText.style = "-fx-text-alignment: left; -fx-vertical-alignment: top; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #ffffff;"
+        appNameText.layoutX = 20.0
+        appNameText.layoutY = 40.0
+
+        val accountIcon = ImageView(Image("file:Client/src/main/resources/account_icon.png"))
+        accountIcon.style = "-fx-text-alignment: left; -fx-vertical-alignment: top;"
+        accountIcon.layoutX = 1380.0
+        accountIcon.layoutY = 20.0
+        accountIcon.fitHeight = 20.0
+        accountIcon.fitWidth = 20.0
+
+        headBar.add(appNameText)
+        headBar.add(accountIcon)
+
+        root.add(headBar)
+
+        val welcomePane = Pane()
+        welcomePane.setPrefSize(1440.0, 836.0)
+        welcomePane.style = "-fx-background-color: #ffffff; "
+        welcomePane.layoutX = 0.0
+        welcomePane.layoutY = 64.0
+
+        val loginText = Text("Hello,\nBefore we start you have to log in to your account")
+        loginText.style = "-fx-text-alignment: left; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        loginText.wrappingWidth = 600.0
+        loginText.x = 420.0
+        loginText.y = 388.0
+
+        val loginButton = Button("Authorize")
+        loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        loginButton.layoutX = 420.0
+        loginButton.layoutY = 470.0
+        loginButton.setPrefSize(160.0, 42.0)
+
+        loginButton.setOnMouseEntered {
+            loginButton.style = "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        }
+
+        loginButton.setOnMouseExited {
+            loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        }
+
+        loginButton.setOnMouseClicked {
+            while (!console.authorized) {
+                runBlocking {
+                    showLoginDialog()
                 }
             }
         }
 
-        loginText.style = "-fx-font-size: 24px;"
-        loginText.style = "-fx-font_family: 'IBM Plex Sans';"
-        loginButton.style = "-fx-font-size: 14px;"
-        loginButton.style = "-fx-font_family: 'IBM Plex Sans';"
+        welcomePane.add(loginText)
+        welcomePane.add(loginButton)
 
-        root.alignment = Pos.CENTER
+        root.add(welcomePane)
 
-        // Add text and login button to the root view
-        root.add(loginText)
-        root.add(loginButton)
     }
 
     private suspend fun showLoginDialog() = coroutineScope {
@@ -103,6 +156,7 @@ class MainView : View() {
                 root.clear()
                 //showLoginDialog()
             }
+
         }
     }
 
@@ -157,6 +211,9 @@ class MainView : View() {
     }
 
     private fun showConsole() {
+        console.initialize()
+        console.registerBasicCommands()
+
         val outputArea = TextArea()
         outputArea.isEditable = false
         outputArea.isWrapText = true
@@ -166,13 +223,40 @@ class MainView : View() {
         val commandWindow = VBox()
         commandWindow.children.addAll(outputArea, inputField)
 
+        val scanner = Scanner(ByteArrayInputStream(inputField.text.toByteArray()))
+
         // Handle user input
         inputField.setOnAction {
-            val command = inputField.text
-            outputArea.appendText("> $command\n")
+            do {
+                try {
+                    outputArea.appendText("$ ")
+
+                    val query = inputField.text.trim().split(" ")
+                    inputField.clear()
+
+                    outputArea.appendText("$query\n")
+
+                    if (query[0] != "") {
+                        console.checkConnection()
+                        console.executeCommand(query)
+                    }
+
+                } catch (e: InvalidInputException) {
+                    outputArea.appendText(e.message)
+//                    logger.warn(e.message)
+                } catch (e: NotAuthorized) {
+                    runBlocking {
+                        showLoginDialog()
+                    }
+                }
+                catch (e: Exception) {
+                    outputArea.appendText(e.message.toString())
+//                    logger.warn(e.message)
+                }
+
+            } while (console.executeFlag != false)
+
             // send the command to the server and get the response
-            outputArea.appendText("Response\n")
-            inputField.clear()
         }
 
         root.add(commandWindow)
@@ -200,6 +284,7 @@ class MainView : View() {
         val meleeWeapon = bind {item?.getWeapon()?.toProperty()}
         val chapter = bind {item?.getChapter()?.toProperty()}
     }
+
     private fun showCollection() {
         val model = SpaceMarineModel()
         val collectionWindow = VBox()
@@ -229,6 +314,7 @@ class MainView : View() {
         collectionWindow.add(collectionText)
         root.add(collectionWindow)
     }
+
     private fun showRacoon() {
         val image = Image("file:Client/src/main/resources/racoon.jpeg", 600.0, 300.0, true, true)
         root.imageview(image)
