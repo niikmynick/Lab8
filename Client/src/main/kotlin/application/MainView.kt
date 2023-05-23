@@ -1,15 +1,13 @@
 package application
 
-import basicClasses.SpaceMarine
+import basicClasses.*
 import clientUtils.Console
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
-import javafx.application.Platform
-import javafx.geometry.Pos
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.GridPane
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
@@ -432,7 +430,6 @@ class MainView : View() {
 
     private fun showCollection() {
         val controller = find(SpaceMarineController::class)
-        val model = SpaceMarineModel()
         val collectionWindow = VBox()
         collectionWindow.tableview(controller.collection) {
             column("Id", SpaceMarine::getId)
@@ -445,17 +442,21 @@ class MainView : View() {
             column("Melee Weapon", SpaceMarine::getWeapon)
             column("Chapter", SpaceMarine::getChapter)
 
-            bindSelected(model)
+            bindSelected(controller.model)
             smartResize()
         }
         collectionWindow.button("Update Collection") {
             action {
-                val input = console.loadCollection().keys.asSequence()
-                val collection = input.map {
-                    Json.decodeFromString(SpaceMarine.serializer(), it)
+                try {
+                    val input = console.loadCollection().keys.asSequence()
+                    val collection = input.map {
+                        Json.decodeFromString(SpaceMarine.serializer(), it)
+                    }
+                    controller.collection.setAll(collection.toList().toObservable())
+                    println(controller.collection)
+                } catch (e: NotAuthorized) {
+                    welcomeView()
                 }
-                controller.collection = collection.toList().toObservable()
-                println(controller.collection)
             }
         }
 

@@ -180,6 +180,9 @@ class Console(host: String, port: Int) {
     fun loadCollection() : Map<String, String> {
         val query = Query(QueryType.COMMAND_EXEC, "import_collection", mutableMapOf(), token)
         val answer = connectionManager.checkedSendReceive(query)
+        if (answer.answerType == AnswerType.AUTH_ERROR) {
+            throw NotAuthorized(answer.message)
+        }
         return jsonCreator.stringToObject(answer.message)
     }
 
