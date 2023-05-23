@@ -26,7 +26,7 @@ class Console(host: String, port: Int) {
     val commandInvoker = CommandInvoker(outputManager)
     private val commandReceiver = CommandReceiver(commandInvoker, outputManager, inputManager, connectionManager)
 
-    private val jsonCreator = JsonCreator()
+    val jsonCreator = JsonCreator()
 
     private val logger: Logger = LogManager.getLogger(Console::class.java)
 
@@ -174,6 +174,12 @@ class Console(host: String, port: Int) {
             token = answer.token
             authorized = true
         }
+    }
+
+    fun loadCollection() : Map<String, String> {
+        val query = Query(QueryType.COMMAND_EXEC, "import_collection", mutableMapOf(), token)
+        val answer = connectionManager.checkedSendReceive(query)
+        return jsonCreator.stringToObject(answer.message)
     }
 
     fun executeCommand(query: List<String>) {

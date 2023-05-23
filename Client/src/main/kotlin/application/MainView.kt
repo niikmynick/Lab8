@@ -5,18 +5,16 @@ import clientUtils.Console
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
 import javafx.application.Platform
-import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
-import javafx.scene.Parent
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import kotlinx.coroutines.*
+import kotlinx.serialization.json.Json
 import tornadofx.*
 import java.io.ByteArrayInputStream
 import kotlin.concurrent.thread
@@ -273,7 +271,7 @@ class MainView : View() {
     }
 
 
-    class SpaceMarineModel : ItemViewModel<SpaceMarine>() {
+    class SpaceMarineModel() : ItemViewModel<SpaceMarine>() {
         val id = bind {item?.getId()?.toProperty()}
         val name = bind {item?.getName()?.toProperty()}
         val coordinates = bind {item?.getCoordinates()?.toProperty()}
@@ -285,12 +283,16 @@ class MainView : View() {
         val chapter = bind {item?.getChapter()?.toProperty()}
     }
 
+    class SpaceMarineController() : Controller() {
+        var collection = listOf<SpaceMarine>().toObservable()
+        val model = SpaceMarineModel()
+    }
+
     private fun showCollection() {
+        val controller = find(SpaceMarineController::class)
         val model = SpaceMarineModel()
         val collectionWindow = VBox()
-        val collectionText = Text("Collection")
-        val collection = listOf<SpaceMarine>().toObservable()
-        collectionWindow.tableview<SpaceMarine> {
+        collectionWindow.tableview(controller.collection) {
             column("Id", SpaceMarine::getId)
             column("Name", SpaceMarine::getName)
             column("Coordinates", SpaceMarine::getCoordinates)
@@ -306,12 +308,15 @@ class MainView : View() {
         }
         collectionWindow.button("Update Collection") {
             action {
-                //TODO: get collection from server
+                val input = console.loadCollection().keys.asSequence()
+                val collection = input.map {
+                    Json.decodeFromString(SpaceMarine.serializer(), it)
+                }
+                controller.collection = collection.toList().toObservable()
+                println(controller.collection)
             }
         }
-        collectionText.style = "-fx-font-size: 24px;"
-        collectionText.style = "-fx-font_family: 'IBM Plex Sans';"
-        collectionWindow.add(collectionText)
+
         root.add(collectionWindow)
     }
 
