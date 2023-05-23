@@ -19,20 +19,19 @@ import javafx.scene.text.Text
 import kotlinx.coroutines.*
 import tornadofx.*
 import java.io.ByteArrayInputStream
-import kotlin.concurrent.thread
 import java.util.*
 
 class MainView : View() {
     private val console = Console("localhost", 8061)
 
-    override var root = VBox()
+    override var root = AnchorPane()
 
     init {
         root.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px;"
-        showWelcome()
+        welcomeView()
     }
 
-    private fun showWelcome() = runBlocking {
+    private fun headPane(needAccountIcon: Boolean) : Pane {
 
         val headBar = Pane()
         headBar.setPrefSize(1440.0, 64.0)
@@ -43,15 +42,25 @@ class MainView : View() {
         appNameText.layoutX = 20.0
         appNameText.layoutY = 40.0
 
-        val accountIcon = ImageView(Image("file:Client/src/main/resources/account_icon.png"))
-        accountIcon.style = "-fx-text-alignment: left; -fx-vertical-alignment: top;"
-        accountIcon.layoutX = 1380.0
-        accountIcon.layoutY = 20.0
-        accountIcon.fitHeight = 20.0
-        accountIcon.fitWidth = 20.0
-
         headBar.add(appNameText)
-        headBar.add(accountIcon)
+
+        if (needAccountIcon) {
+            val accountIcon = ImageView(Image("file:Client/src/main/resources/account_icon.png"))
+            accountIcon.style = "-fx-text-alignment: left; -fx-vertical-alignment: top;"
+            accountIcon.layoutX = 1380.0
+            accountIcon.layoutY = 20.0
+            accountIcon.fitHeight = 20.0
+            accountIcon.fitWidth = 20.0
+
+            headBar.add(accountIcon)
+        }
+
+        return headBar
+    }
+
+    private fun welcomeView() = runBlocking {
+
+        val headBar = headPane(false)
 
         root.add(headBar)
 
@@ -82,11 +91,7 @@ class MainView : View() {
         }
 
         loginButton.setOnMouseClicked {
-            while (!console.authorized) {
-                runBlocking {
-                    showLoginDialog()
-                }
-            }
+            loginView()
         }
 
         welcomePane.add(loginText)
@@ -96,71 +101,208 @@ class MainView : View() {
 
     }
 
-    private suspend fun showLoginDialog() = coroutineScope {
-        // Create a new dialog for user to enter login details
-        val dialog = Dialog<Pair<String, String>>()
-        dialog.title = "Log in"
-        dialog.headerText = "Please enter your username and password."
+    private fun loginView() {
 
-        // Set the button types
-        val loginButtonType = ButtonType("Log in", ButtonBar.ButtonData.OK_DONE)
-        dialog.dialogPane.buttonTypes.addAll(loginButtonType, ButtonType.CANCEL)
+        root.clear()
 
-        // Create the username and password labels and fields
+        val headBar = headPane(false)
+
+        root.add(headBar)
+
+        val loginPane = Pane()
+        loginPane.setPrefSize(450.0, 480.0)
+        loginPane.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+        loginPane.layoutX = 495.0
+        loginPane.layoutY = 242.0
+
+        val title = Text("Auth")
+        title.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        title.x = 28.0
+        title.y = 52.0
+
+        val nameInvoke = Text("Username")
+        nameInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        nameInvoke.x = 28.0
+        nameInvoke.y = 120.0
+
         val username = TextField()
+        username.promptText = "Enter your username here"
+        username.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        username.layoutX = 28.0
+        username.layoutY = 140.0
+        username.setPrefSize(394.0, 42.0)
+
+        val passwordInvoke = Text("Password")
+        passwordInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        passwordInvoke.x = 28.0
+        passwordInvoke.y = 230.0
+
         val password = PasswordField()
-        val grid = GridPane()
-        grid.add(Label("Username:"), 0, 0)
-        grid.add(username, 1, 0)
-        grid.add(Label("Password:"), 0, 1)
-        grid.add(password, 1, 1)
+        password.promptText = "Enter your password here"
+        password.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        password.layoutX = 28.0
+        password.layoutY = 250.0
+        password.setPrefSize(394.0, 42.0)
 
-        // Enable/disable login button depending on whether username and password are entered
-        val loginButton = dialog.dialogPane.lookupButton(loginButtonType)
-        loginButton.isDisable = true
-        username.textProperty().addListener { _, _, newValue ->
-            loginButton.isDisable = newValue.trim().isEmpty() || password.text.trim().isEmpty()
+        val loginButton = Button("Log In")
+        loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        loginButton.layoutX = 145.0
+        loginButton.layoutY = 341.0
+        loginButton.setPrefSize(160.0, 42.0)
+
+        loginButton.setOnMouseEntered {
+            loginButton.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
-        password.textProperty().addListener { _, _, newValue ->
-            loginButton.isDisable = newValue.trim().isEmpty() || username.text.trim().isEmpty()
+
+        loginButton.setOnMouseExited {
+            loginButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
         }
 
-        dialog.dialogPane.content = grid
-
-        // Focus on the username field by default
-        Platform.runLater { username.requestFocus() }
-
-        // Convert the result to a username-password-pair when the login button is clicked
-        dialog.setResultConverter { dialogButton ->
-            if (dialogButton == loginButtonType) {
-                Pair(username.text, password.text)
-            } else {
-                null
+        loginButton.setOnMouseClicked {
+            while (!console.authorized) {
+                runBlocking {
+                    if (!console.authorize(username.text, password.text)) {
+                        loginView()
+                    } else {
+                        showMenu()
+                    }
+                }
             }
         }
 
-        val result = dialog.showAndWait()
+        val registerInvoke = Text("Don't have an account?\nRegister")
+        registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        registerInvoke.x = 152.0
+        registerInvoke.y = 421.0
 
-        // Update the UI based on whether the user is logged in or not
-        if (result.isPresent) {
-            console.authorized = true // TODO: CHANGE. USED ONLY FOR DEBUGGING PURPOSES
-            val authorization = thread {
-                console.authorize(result.get().first, result.get().second)
-            }
-            authorization.join(5000)
-            if (console.authorized) {
-                root.clear()
-                root.alignment = Pos.TOP_LEFT
-                showMenu()
-            } else {
-                root.clear()
-                //showLoginDialog()
-            }
-
+        registerInvoke.setOnMouseEntered {
+            registerInvoke.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
         }
+
+        registerInvoke.setOnMouseExited {
+            registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        }
+
+        registerInvoke.setOnMouseClicked {
+            registerView()
+        }
+
+
+        loginPane.add(title)
+        loginPane.add(nameInvoke)
+        loginPane.add(username)
+        loginPane.add(passwordInvoke)
+        loginPane.add(password)
+        loginPane.add(loginButton)
+        loginPane.add(registerInvoke)
+
+        root.add(loginPane)
+    }
+
+    private fun registerView() {
+
+        root.clear()
+
+        val headBar = headPane(false)
+
+        root.add(headBar)
+
+        val registerPane = Pane()
+        registerPane.setPrefSize(450.0, 480.0)
+        registerPane.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+        registerPane.layoutX = 495.0
+        registerPane.layoutY = 242.0
+
+        val title = Text("Auth")
+        title.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        title.x = 28.0
+        title.y = 52.0
+
+        val nameInvoke = Text("Username")
+        nameInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        nameInvoke.x = 28.0
+        nameInvoke.y = 120.0
+
+        val username = TextField()
+        username.promptText = "Enter your username here"
+        username.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        username.layoutX = 28.0
+        username.layoutY = 140.0
+        username.setPrefSize(394.0, 42.0)
+
+        val passwordInvoke = Text("Password")
+        passwordInvoke.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        passwordInvoke.x = 28.0
+        passwordInvoke.y = 230.0
+
+        val password = PasswordField()
+        password.promptText = "Enter your password here"
+        password.style = "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        password.layoutX = 28.0
+        password.layoutY = 250.0
+        password.setPrefSize(394.0, 42.0)
+
+        val registerButton = Button("Sign In")
+        registerButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        registerButton.layoutX = 145.0
+        registerButton.layoutY = 341.0
+        registerButton.setPrefSize(160.0, 42.0)
+
+        registerButton.setOnMouseEntered {
+            registerButton.style = "-fx-text-fill: #555; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #777; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        }
+
+        registerButton.setOnMouseExited {
+            registerButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        }
+
+        registerButton.setOnMouseClicked {
+            while (!console.authorized) {
+                runBlocking {
+                    if (!console.authorize(username.text, password.text)) {
+                        registerView()
+                    } else {
+                        showMenu()
+                    }
+                }
+            }
+        }
+
+        val registerInvoke = Text("Already have an account?\nLog In")
+        registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        registerInvoke.x = 152.0
+        registerInvoke.y = 421.0
+
+        registerInvoke.setOnMouseEntered {
+            registerInvoke.style = "-fx-text-fill: #777; -fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        }
+
+        registerInvoke.setOnMouseExited {
+            registerInvoke.style = "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
+        }
+
+        registerInvoke.setOnMouseClicked {
+            loginView()
+        }
+
+
+        registerPane.add(title)
+        registerPane.add(nameInvoke)
+        registerPane.add(username)
+        registerPane.add(passwordInvoke)
+        registerPane.add(password)
+        registerPane.add(registerButton)
+        registerPane.add(registerInvoke)
+
+        root.add(registerPane)
     }
 
     private fun showMenu() {
+        root.clear()
+
+        val headBar = headPane(true)
+        root.add(headBar)
+
         // Create a menu with options to go to console, settings, and a separate menu
         val menuBar = MenuBar()
 
@@ -246,7 +388,7 @@ class MainView : View() {
 //                    logger.warn(e.message)
                 } catch (e: NotAuthorized) {
                     runBlocking {
-                        showLoginDialog()
+                        loginView()
                     }
                 }
                 catch (e: Exception) {

@@ -7268,3 +7268,161 @@
 2023-05-16 13:08:59.408 [ForkJoinPool.commonPool-worker-9] DEBUG multithread.SenderThread - Sending utils.Answer@28e9ce95
 2023-05-16 13:08:59.408 [ForkJoinPool.commonPool-worker-9] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
 2023-05-16 13:08:59.408 [ForkJoinPool.commonPool-worker-9] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:09:45.611 [main] INFO  serverUtils.Console - Initializing the server
+2023-05-23 12:09:45.616 [main] DEBUG serverUtils.Console - Command 'info' registered
+2023-05-23 12:09:45.616 [main] DEBUG serverUtils.Console - Command 'show' registered
+2023-05-23 12:09:45.617 [main] DEBUG serverUtils.Console - Command 'add' registered
+2023-05-23 12:09:45.617 [main] DEBUG serverUtils.Console - Command 'update_id' registered
+2023-05-23 12:09:45.617 [main] DEBUG serverUtils.Console - Command 'remove_by_id' registered
+2023-05-23 12:09:45.617 [main] DEBUG serverUtils.Console - Command 'clear' registered
+2023-05-23 12:09:45.618 [main] DEBUG serverUtils.Console - Command 'add_if_min' registered
+2023-05-23 12:09:45.618 [main] DEBUG serverUtils.Console - Command 'remove_greater' registered
+2023-05-23 12:09:45.618 [main] DEBUG serverUtils.Console - Command 'remove_lower' registered
+2023-05-23 12:09:45.619 [main] DEBUG serverUtils.Console - Command 'remove_any_by_chapter' registered
+2023-05-23 12:09:45.619 [main] DEBUG serverUtils.Console - Command 'count_by_melee_weapon' registered
+2023-05-23 12:09:45.619 [main] DEBUG serverUtils.Console - Command 'filter_by_chapter' registered
+2023-05-23 12:09:45.620 [main] DEBUG serverUtils.Console - Command 'filter_by_weapon' registered
+2023-05-23 12:09:45.620 [main] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:09:57.435 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:08.490 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:17.375 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:26.874 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:35.763 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:44.789 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:53.374 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:10:53.375 [main] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:10:53.375 [main] INFO  serverUtils.Console - Collection loaded
+2023-05-23 12:10:53.378 [main] INFO  serverUtils.ConnectionManager - Server started on localhost/127.0.0.1:8072
+2023-05-23 12:10:53.385 [main] INFO  serverUtils.Console - The server is ready to receive commands
+2023-05-23 12:11:47.280 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:11:47.291 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-23 12:11:47.291 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@75e590a7
+2023-05-23 12:11:47.292 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-23 12:11:47.292 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:11:47.297 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:11:47.298 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-23 12:11:47.298 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:11:49.951 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.951 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.952 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.952 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.952 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.953 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.953 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:11:49.953 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:11:58.198 [pool-2-thread-1] DEBUG users.UserManager - User test authorized
+2023-05-23 12:11:58.368 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@3ab16ba1
+2023-05-23 12:11:58.368 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-23 12:11:58.368 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNDE4fQ.wdGBB_sgK5Fo7zkC9-J49HXyU_WuAcaraFqo2VdL3SE","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:13:01.739 [main] INFO  serverUtils.Console - Initializing the server
+2023-05-23 12:13:01.743 [main] DEBUG serverUtils.Console - Command 'info' registered
+2023-05-23 12:13:01.743 [main] DEBUG serverUtils.Console - Command 'show' registered
+2023-05-23 12:13:01.744 [main] DEBUG serverUtils.Console - Command 'add' registered
+2023-05-23 12:13:01.744 [main] DEBUG serverUtils.Console - Command 'update_id' registered
+2023-05-23 12:13:01.744 [main] DEBUG serverUtils.Console - Command 'remove_by_id' registered
+2023-05-23 12:13:01.745 [main] DEBUG serverUtils.Console - Command 'clear' registered
+2023-05-23 12:13:01.745 [main] DEBUG serverUtils.Console - Command 'add_if_min' registered
+2023-05-23 12:13:01.745 [main] DEBUG serverUtils.Console - Command 'remove_greater' registered
+2023-05-23 12:13:01.745 [main] DEBUG serverUtils.Console - Command 'remove_lower' registered
+2023-05-23 12:13:01.746 [main] DEBUG serverUtils.Console - Command 'remove_any_by_chapter' registered
+2023-05-23 12:13:01.746 [main] DEBUG serverUtils.Console - Command 'count_by_melee_weapon' registered
+2023-05-23 12:13:01.746 [main] DEBUG serverUtils.Console - Command 'filter_by_chapter' registered
+2023-05-23 12:13:01.747 [main] DEBUG serverUtils.Console - Command 'filter_by_weapon' registered
+2023-05-23 12:13:01.747 [main] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:13:13.300 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:13:21.853 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:13:30.684 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:13:39.162 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:13:47.719 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:13:56.834 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:14:06.176 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:14:06.177 [main] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:14:06.177 [main] INFO  serverUtils.Console - Collection loaded
+2023-05-23 12:14:06.179 [main] INFO  serverUtils.ConnectionManager - Server started on localhost/127.0.0.1:8072
+2023-05-23 12:14:06.180 [main] INFO  serverUtils.Console - The server is ready to receive commands
+2023-05-23 12:14:20.869 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:14:20.881 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-23 12:14:20.882 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@54825a09
+2023-05-23 12:14:20.882 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-23 12:14:20.882 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:14:20.893 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:14:20.894 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-23 12:14:20.894 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:14:23.555 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.556 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.556 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.556 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.556 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.557 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.557 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:14:23.557 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:14:32.588 [pool-2-thread-1] DEBUG users.UserManager - User test authorized
+2023-05-23 12:14:32.728 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@f4b4d3b
+2023-05-23 12:14:32.729 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-23 12:14:32.729 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNTcyfQ.ZRtKLV29ZjWh_0GP_mh1_Q-wCNhrkYm5JKNdUkrJhhw","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:15:30.201 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:15:30.202 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-23 12:15:30.202 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@5020283
+2023-05-23 12:15:30.202 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-23 12:15:30.202 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:15:30.205 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:15:30.206 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-23 12:15:30.206 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:15:33.856 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.856 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.856 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.856 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.856 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.857 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.857 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:15:33.857 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:15:42.519 [pool-2-thread-1] DEBUG users.UserManager - User test authorized
+2023-05-23 12:15:42.521 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@7ac9a47
+2023-05-23 12:15:42.522 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-23 12:15:42.522 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNjQyfQ.1KfeOOJCXIqMYmFCWqquDdWYW34oM5sV9tfKjCDRvng","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:36:39.099 [main] INFO  serverUtils.Console - Initializing the server
+2023-05-23 12:36:39.103 [main] DEBUG serverUtils.Console - Command 'info' registered
+2023-05-23 12:36:39.103 [main] DEBUG serverUtils.Console - Command 'show' registered
+2023-05-23 12:36:39.103 [main] DEBUG serverUtils.Console - Command 'add' registered
+2023-05-23 12:36:39.104 [main] DEBUG serverUtils.Console - Command 'update_id' registered
+2023-05-23 12:36:39.104 [main] DEBUG serverUtils.Console - Command 'remove_by_id' registered
+2023-05-23 12:36:39.104 [main] DEBUG serverUtils.Console - Command 'clear' registered
+2023-05-23 12:36:39.105 [main] DEBUG serverUtils.Console - Command 'add_if_min' registered
+2023-05-23 12:36:39.105 [main] DEBUG serverUtils.Console - Command 'remove_greater' registered
+2023-05-23 12:36:39.105 [main] DEBUG serverUtils.Console - Command 'remove_lower' registered
+2023-05-23 12:36:39.106 [main] DEBUG serverUtils.Console - Command 'remove_any_by_chapter' registered
+2023-05-23 12:36:39.106 [main] DEBUG serverUtils.Console - Command 'count_by_melee_weapon' registered
+2023-05-23 12:36:39.106 [main] DEBUG serverUtils.Console - Command 'filter_by_chapter' registered
+2023-05-23 12:36:39.107 [main] DEBUG serverUtils.Console - Command 'filter_by_weapon' registered
+2023-05-23 12:36:39.107 [main] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:36:50.547 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:36:59.522 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:09.301 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:18.201 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:26.840 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:35.959 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:44.832 [main] INFO  serverUtils.FileManager - Loaded SpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1))
+2023-05-23 12:37:44.833 [main] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:37:44.833 [main] INFO  serverUtils.Console - Collection loaded
+2023-05-23 12:37:44.836 [main] INFO  serverUtils.ConnectionManager - Server started on localhost/127.0.0.1:8072
+2023-05-23 12:37:44.837 [main] INFO  serverUtils.Console - The server is ready to receive commands
+2023-05-23 12:38:15.281 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:38:15.291 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received ping request from: localhost/127.0.0.1:8071
+2023-05-23 12:38:15.292 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@e8cac34
+2023-05-23 12:38:15.292 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8080
+2023-05-23 12:38:15.292 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:38:15.298 [main] INFO  serverUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:38:15.298 [pool-2-thread-1] INFO  multithread.ReceiverThread - Received authorization request
+2023-05-23 12:38:15.299 [pool-2-thread-1] INFO  serverUtils.FileManager - Loading from database
+2023-05-23 12:38:18.620 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=23 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.621 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=24 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.621 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=25 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.622 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=26 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.622 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=27 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.622 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=28 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.623 [pool-2-thread-1] WARN  serverUtils.FileManager - Space MarineSpaceMarine(id=29 ,name=Noname, coordinates=Coordinates(x=0.0, y=0), creationDate=2023-05-23, health=1.0, loyal=false, category=HELIX, meleeWeapon=POWER_FIST, chapter=Chapter(name=a, marinesCount=1)) cannot be added to collection as a Space Marine with this id already exists
+2023-05-23 12:38:18.623 [pool-2-thread-1] INFO  serverUtils.FileManager - Loaded 7 elements successfully
+2023-05-23 12:38:27.265 [pool-2-thread-1] DEBUG users.UserManager - User test authorized
+2023-05-23 12:38:27.404 [ForkJoinPool.commonPool-worker-1] DEBUG multithread.SenderThread - Sending utils.Answer@28f299f4
+2023-05-23 12:38:27.404 [ForkJoinPool.commonPool-worker-1] INFO  serverUtils.ConnectionManager - Sending answer to /127.0.0.1:8071
+2023-05-23 12:38:27.404 [ForkJoinPool.commonPool-worker-1] DEBUG serverUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODM1MDA3fQ.IijTl_CS8qKG_CiTCEmMqVHmdOTFI7X2zKEPNXqImhc","receiver":"/127.0.0.1:6790"}

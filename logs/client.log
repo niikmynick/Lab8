@@ -2233,3 +2233,130 @@
 2023-05-23 11:28:28.637 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
 2023-05-23 11:28:41.232 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
 2023-05-23 11:28:48.070 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:36:03.791 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:45:40.714 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:46:46.785 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:46:51.100 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:47:39.293 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:47:42.547 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:48:33.260 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:48:36.655 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:49:12.817 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:49:16.800 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:49:38.903 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:49:44.697 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:50:52.409 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:50:57.048 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:51:29.812 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:51:32.831 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:51:43.088 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:51:45.795 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:52:56.178 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:53:46.643 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:53:51.008 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:55:50.818 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:55:55.052 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:56:58.664 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:57:00.836 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:57:25.989 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:57:28.201 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:58:44.336 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:58:49.696 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:59:02.077 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:59:05.125 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:59:16.822 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:59:20.300 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:59:43.887 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 11:59:46.561 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 11:59:59.907 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:00:04.628 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:02:53.061 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:02:56.032 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:03:34.235 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:03:52.639 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:05:13.818 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:05:17.091 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:06:28.092 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:06:32.012 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"","password":""}} to localhost/127.0.0.1:8061
+2023-05-23 12:07:42.996 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:07:45.118 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"","password":""}} to localhost/127.0.0.1:8061
+2023-05-23 12:08:52.086 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:08:54.210 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"","password":""}} to localhost/127.0.0.1:8061
+2023-05-23 12:11:38.086 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:11:47.234 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}} to localhost/127.0.0.1:8061
+2023-05-23 12:11:58.379 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNDE4fQ.wdGBB_sgK5Fo7zkC9-J49HXyU_WuAcaraFqo2VdL3SE","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:11:58.389 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent authorization query
+2023-05-23 12:11:58.390 [JavaFX Application Thread] DEBUG clientUtils.Console - Authorized
+2023-05-23 12:12:20.045 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:12:48.724 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:12:50.247 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:14:14.521 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:14:20.832 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}} to localhost/127.0.0.1:8061
+2023-05-23 12:14:32.739 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNTcyfQ.ZRtKLV29ZjWh_0GP_mh1_Q-wCNhrkYm5JKNdUkrJhhw","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:14:32.747 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent authorization query
+2023-05-23 12:14:32.747 [JavaFX Application Thread] DEBUG clientUtils.Console - Authorized
+2023-05-23 12:14:36.975 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:15:24.202 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:15:30.197 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}} to localhost/127.0.0.1:8061
+2023-05-23 12:15:42.534 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNjQyfQ.1KfeOOJCXIqMYmFCWqquDdWYW34oM5sV9tfKjCDRvng","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:15:42.540 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent authorization query
+2023-05-23 12:15:42.540 [JavaFX Application Thread] DEBUG clientUtils.Console - Authorized
+2023-05-23 12:15:46.758 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:20:18.212 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:20:24.061 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:20:50.112 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:21:02.909 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:21:20.854 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:21:25.780 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:21:33.715 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:21:42.225 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:22:52.000 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:22:59.096 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:23:17.669 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:23:20.799 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:23:27.709 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:23:36.941 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:24:00.765 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:24:03.234 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:24:58.906 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:25:02.049 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:25:20.195 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:25:22.797 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:25:52.664 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:25:56.739 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:26:10.303 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:26:20.850 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:26:37.602 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:26:51.614 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:27:14.781 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:27:22.023 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:27:29.476 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:27:33.331 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:27:51.096 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:28:20.835 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:28:39.808 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:28:48.147 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:29:00.619 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:29:06.280 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:29:30.319 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:29:34.159 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:29:47.267 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:29:49.992 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:29:57.292 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:30:06.673 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:31:34.193 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:31:43.042 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:32:44.978 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:32:52.309 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:33:31.239 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:34:10.472 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:35:41.862 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:35:48.880 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:36:20.078 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:36:29.188 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
+2023-05-23 12:37:52.069 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6790
+2023-05-23 12:38:15.245 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}} to localhost/127.0.0.1:8061
+2023-05-23 12:38:27.414 [JavaFX Application Thread] INFO  clientUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODM1MDA3fQ.IijTl_CS8qKG_CiTCEmMqVHmdOTFI7X2zKEPNXqImhc","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:38:27.419 [JavaFX Application Thread] DEBUG clientUtils.Console - Sent authorization query
+2023-05-23 12:38:27.419 [JavaFX Application Thread] DEBUG clientUtils.Console - Authorized
+2023-05-23 12:38:35.143 [JavaFX Application Thread] DEBUG clientUtils.ConnectionManager - Bound on port: 6791
