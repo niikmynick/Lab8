@@ -4,17 +4,12 @@ import basicClasses.SpaceMarine
 import clientUtils.Console
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
-import javafx.application.Platform
-import javafx.fxml.FXMLLoader
-import javafx.geometry.Pos
-import javafx.scene.Parent
+import javafx.geometry.Insets
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.GridPane
-import javafx.scene.layout.Pane
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
+import javafx.scene.paint.Color
 import javafx.scene.text.Text
 import kotlinx.coroutines.*
 import tornadofx.*
@@ -27,8 +22,8 @@ class MainView : View() {
     override var root = AnchorPane()
 
     init {
-        root.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px;"
-        welcomeView()
+        root.background = Background(BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY))
+        showMenu()
     }
 
     private fun headPane(needAccountIcon: Boolean) : Pane {
@@ -52,13 +47,94 @@ class MainView : View() {
             accountIcon.fitHeight = 20.0
             accountIcon.fitWidth = 20.0
 
+            accountIcon.setOnMouseClicked {
+                showSettings()
+            }
+
             headBar.add(accountIcon)
         }
 
         return headBar
     }
 
-    private fun welcomeView() = runBlocking {
+    private fun leftBox() : VBox {
+
+        val homeButton = Button()
+        homeButton.imageview("file:Client/src/main/resources/home_icon.png") {
+            fitHeight = 25.0
+            fitWidth = 30.0
+        }
+        homeButton.style = "-fx-background-color: transparent;"
+        homeButton.setOnMouseClicked {
+            showMenu()
+        }
+
+        val consoleButton = Button()
+        consoleButton.imageview("file:Client/src/main/resources/console_icon.png") {
+            fitHeight = 30.0
+            fitWidth = 30.0
+
+        }
+        consoleButton.style = "-fx-background-color: transparent;"
+        consoleButton.setOnMouseClicked {
+            showConsole()
+        }
+
+        val collectionButton = Button()
+        collectionButton.imageview("file:Client/src/main/resources/collection_icon.png") {
+            fitHeight = 30.0
+            fitWidth = 30.0
+        }
+        collectionButton.style = "-fx-background-color: transparent;"
+
+        collectionButton.setOnMouseClicked {
+            showCollection()
+        }
+
+        val leftMenu = VBox(20.0, homeButton, consoleButton, collectionButton)
+        leftMenu.style = "-fx-background-color: #fff;"
+        leftMenu.setPrefSize(72.0, 836.0)
+        leftMenu.layoutX = 0.0
+        leftMenu.layoutY = 64.0
+        leftMenu.padding = Insets(20.0, 0.0, 0.0, 12.0)
+
+        return leftMenu
+    }
+
+    private fun block(title: String, description: String, buttonText: String, buttonAction: () -> Unit) : Pane {
+
+        val block = Pane()
+        block.setPrefSize(436.0, 211.0)
+        block.style = "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+
+        val blockTitle = Text(title)
+        blockTitle.style = "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
+        blockTitle.layoutX = 28.0
+        blockTitle.layoutY = 52.0
+
+        val blockDescription = Text(description)
+        blockDescription.style = "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000;"
+        blockDescription.layoutX = 28.0
+        blockDescription.layoutY = 96.0
+
+        val blockButton = Button(buttonText)
+        blockButton.style = "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000;"
+        blockButton.layoutX = 28.0
+        blockButton.layoutY = 140.0
+        blockButton.setPrefSize(160.0, 42.0)
+        blockButton.setOnMouseClicked {
+            buttonAction()
+        }
+
+        block.add(blockTitle)
+        block.add(blockDescription)
+        block.add(blockButton)
+
+        return block
+    }
+
+
+    private fun welcomeView() {
 
         val headBar = headPane(false)
 
@@ -303,58 +379,41 @@ class MainView : View() {
         val headBar = headPane(true)
         root.add(headBar)
 
-        // Create a menu with options to go to console, settings, and a separate menu
-        val menuBar = MenuBar()
+        val leftMenu = leftBox()
+        root.add(leftMenu)
 
-        menuBar.style = "-fx-background-color: #000000;"
-        menuBar.style = "-fx-font-size: 14px;"
-        menuBar.style = "-fx-font_family: 'IBM Plex Sans';"
+        val consoleBlock = block("Console", "Manage your collection", "Open editor", { showConsole() })
+        consoleBlock.layoutX = 72.0
+        consoleBlock.layoutY = 84.0
+        root.add(consoleBlock)
 
-        val consoleMenu = Menu()
-        val settingsMenu = Menu()
-        val racoon = Menu()
-        val collectionMenu = Menu()
+        val settingsBlock = block("Settings", "Set up your account and application preferences", "Open settings", { showSettings() })
+        settingsBlock.layoutX = 528.0
+        settingsBlock.layoutY = 84.0
+        root.add(settingsBlock)
 
+        val collectionBlock = block("Collection", "Check out all existing Space Marines", "Go to the collection", { showCollection() })
+        collectionBlock.layoutX = 984.0
+        collectionBlock.layoutY = 84.0
+        root.add(collectionBlock)
 
-        consoleMenu.button("Console") {
-            action {
-                root.clear()
-                showMenu()
-                showConsole()
-            }
-        }
-
-        settingsMenu.button("Settings") {
-            action {
-                root.clear()
-                showMenu()
-                showSettings()
-            }
-        }
-
-        racoon.button("Racoon") {
-            action {
-                root.clear()
-                showMenu()
-                showRacoon()
-            }
-        }
-
-        collectionMenu.button("Collection") {
-            action {
-                root.clear()
-                showMenu()
-                showCollection()
-            }
-        }
-        menuBar.menus.addAll(consoleMenu, settingsMenu, racoon, collectionMenu)
-
-        root.add(menuBar)
+        val memeBlock = block("Fun stuff", "Racoon is here", "Open the page", { showRacoon() })
+        memeBlock.layoutX = 72.0
+        memeBlock.layoutY = 315.0
+        root.add(memeBlock)
     }
 
     private fun showConsole() {
-        console.initialize()
-        console.registerBasicCommands()
+//        console.initialize()
+//        console.registerBasicCommands()
+
+        root.clear()
+
+        val headBar = headPane(true)
+        root.add(headBar)
+
+        val leftMenu = leftBox()
+        root.add(leftMenu)
 
         val outputArea = TextArea()
         outputArea.isEditable = false
@@ -404,8 +463,15 @@ class MainView : View() {
         root.add(commandWindow)
     }
 
-
     private fun showSettings() {
+        root.clear()
+
+        val headBar = headPane(true)
+        root.add(headBar)
+
+        val leftMenu = leftBox()
+        root.add(leftMenu)
+
         val settingsWindow = VBox()
         val settingsText = Text("Settings")
         settingsText.style = "-fx-font-size: 24px;"
@@ -428,9 +494,27 @@ class MainView : View() {
     }
 
     private fun showCollection() {
+        root.clear()
+
+        val headBar = headPane(true)
+        root.add(headBar)
+
+        val leftMenu = leftBox()
+        root.add(leftMenu)
+
         val model = SpaceMarineModel()
+
         val collectionWindow = VBox()
-        val collectionText = Text("Collection")
+        collectionWindow.style = "-fx-background-color: #ffffff;"
+        collectionWindow.layoutX = 72.0
+        collectionWindow.layoutY = 84.0
+
+        val collectionTitle = Text("Collection")
+        collectionTitle.style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+        collectionTitle.x = 72.0
+        collectionTitle.y = 84.0
+        collectionWindow.add(collectionTitle)
+
         val collection = listOf<SpaceMarine>().toObservable()
         collectionWindow.tableview<SpaceMarine> {
             column("Id", SpaceMarine::getId)
@@ -445,21 +529,29 @@ class MainView : View() {
 
             bindSelected(model)
             smartResize()
-        }
+        }.style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-position: absolute;"
         collectionWindow.button("Update Collection") {
             action {
                 //TODO: get collection from server
             }
         }
-        collectionText.style = "-fx-font-size: 24px;"
-        collectionText.style = "-fx-font_family: 'IBM Plex Sans';"
-        collectionWindow.add(collectionText)
+
         root.add(collectionWindow)
     }
 
     private fun showRacoon() {
-        val image = Image("file:Client/src/main/resources/racoon.jpeg", 600.0, 300.0, true, true)
-        root.imageview(image)
+        root.clear()
+
+        val headBar = headPane(true)
+        root.add(headBar)
+
+        val leftMenu = leftBox()
+        root.add(leftMenu)
+
+        val image = ImageView(Image("file:Client/src/main/resources/racoon.jpeg", 1300.0, 800.0, true, true))
+        image.x = 72.0
+        image.y = 84.0
+        root.add(image)
     }
 
 }
