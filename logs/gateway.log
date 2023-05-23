@@ -6123,3 +6123,55 @@
 2023-05-16 13:08:59.409 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
 2023-05-16 13:08:59.409 [pool-2-thread-3] INFO  gatewayUtils.ConnectionManager - Sending answer to /127.0.0.1:6790
 2023-05-16 13:08:59.409 [pool-2-thread-3] INFO  gatewayUtils.ConnectionManager - Sending: {"answerType":"SYSTEM","message":"Pong","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:09:20.632 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8061 for Clients
+2023-05-23 12:09:20.635 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8071 for Servers
+2023-05-23 12:09:20.635 [main] INFO  gatewayUtils.Console - The server is ready to receive commands
+2023-05-23 12:10:53.397 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"REGISTRATION_REQUEST","message":"Registration request","receiver":""}
+2023-05-23 12:11:47.236 [main] INFO  gatewayUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}}
+2023-05-23 12:11:47.247 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:11:47.275 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:11:47.294 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:11:47.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Ping with server: 17.75 ms
+2023-05-23 12:11:47.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:11:47.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:11:58.369 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNDE4fQ.wdGBB_sgK5Fo7zkC9-J49HXyU_WuAcaraFqo2VdL3SE","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:11:58.370 [pool-2-thread-2] INFO  gatewayUtils.ConnectionManager - Sending answer to /127.0.0.1:6790
+2023-05-23 12:11:58.371 [pool-2-thread-2] INFO  gatewayUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNDE4fQ.wdGBB_sgK5Fo7zkC9-J49HXyU_WuAcaraFqo2VdL3SE","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:12:53.680 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8061 for Clients
+2023-05-23 12:12:53.683 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8071 for Servers
+2023-05-23 12:12:53.683 [main] INFO  gatewayUtils.Console - The server is ready to receive commands
+2023-05-23 12:14:06.191 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"REGISTRATION_REQUEST","message":"Registration request","receiver":""}
+2023-05-23 12:14:20.834 [main] INFO  gatewayUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}}
+2023-05-23 12:14:20.842 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:14:20.865 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:14:20.884 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:14:20.886 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Ping with server: 18.2259 ms
+2023-05-23 12:14:20.886 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:14:20.886 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:14:32.730 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNTcyfQ.ZRtKLV29ZjWh_0GP_mh1_Q-wCNhrkYm5JKNdUkrJhhw","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:14:32.731 [pool-2-thread-1] INFO  gatewayUtils.ConnectionManager - Sending answer to /127.0.0.1:6790
+2023-05-23 12:14:32.732 [pool-2-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNTcyfQ.ZRtKLV29ZjWh_0GP_mh1_Q-wCNhrkYm5JKNdUkrJhhw","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:15:30.199 [main] INFO  gatewayUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}}
+2023-05-23 12:15:30.199 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:15:30.200 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:15:30.204 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:15:30.204 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Ping with server: 4.0006 ms
+2023-05-23 12:15:30.204 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:15:30.204 [pool-3-thread-2] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:15:42.524 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNjQyfQ.1KfeOOJCXIqMYmFCWqquDdWYW34oM5sV9tfKjCDRvng","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:15:42.524 [pool-2-thread-2] INFO  gatewayUtils.ConnectionManager - Sending answer to /127.0.0.1:6790
+2023-05-23 12:15:42.525 [pool-2-thread-2] INFO  gatewayUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODMzNjQyfQ.1KfeOOJCXIqMYmFCWqquDdWYW34oM5sV9tfKjCDRvng","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:36:35.706 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8061 for Clients
+2023-05-23 12:36:35.709 [main] INFO  gatewayUtils.ConnectionManager - Gateway started on localhost/127.0.0.1:8071 for Servers
+2023-05-23 12:36:35.709 [main] INFO  gatewayUtils.Console - The server is ready to receive commands
+2023-05-23 12:37:44.848 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"REGISTRATION_REQUEST","message":"Registration request","receiver":""}
+2023-05-23 12:38:15.247 [main] INFO  gatewayUtils.ConnectionManager - Received: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test"}}
+2023-05-23 12:38:15.256 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:38:15.277 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"PING","message":"Ping","args":{"sender":"localhost/127.0.0.1:8071"}}
+2023-05-23 12:38:15.294 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"SYSTEM","message":"Pong","receiver":"localhost/127.0.0.1:8071"}
+2023-05-23 12:38:15.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Ping with server: 16.1827 ms
+2023-05-23 12:38:15.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending query to /127.0.0.1:8072
+2023-05-23 12:38:15.296 [pool-3-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"queryType":"AUTHORIZATION","message":"","args":{"username":"test","password":"test","sender":"/127.0.0.1:6790"}}
+2023-05-23 12:38:27.405 [main] INFO  gatewayUtils.ConnectionManager - Received: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODM1MDA3fQ.IijTl_CS8qKG_CiTCEmMqVHmdOTFI7X2zKEPNXqImhc","receiver":"/127.0.0.1:6790"}
+2023-05-23 12:38:27.406 [pool-2-thread-1] INFO  gatewayUtils.ConnectionManager - Sending answer to /127.0.0.1:6790
+2023-05-23 12:38:27.406 [pool-2-thread-1] INFO  gatewayUtils.ConnectionManager - Sending: {"answerType":"OK","message":"Authorized","token":"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXJ2ZXIiLCJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjg0ODM1MDA3fQ.IijTl_CS8qKG_CiTCEmMqVHmdOTFI7X2zKEPNXqImhc","receiver":"/127.0.0.1:6790"}
