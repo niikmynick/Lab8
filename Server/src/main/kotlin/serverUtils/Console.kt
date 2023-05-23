@@ -115,6 +115,9 @@ class Console {
         commandInvoker.register("filter_by_weapon", FilterByWeapon(commandReceiver))
         logger.debug("Command 'filter_by_weapon' registered")
 
+        commandInvoker.register("import_collection", ImportCollection(dbManager, jsonCreator))
+        logger.debug("Command 'import_collection' registered")
+
         fileManager.load(collectionManager)
         logger.info("Collection loaded")
 

@@ -1,6 +1,6 @@
 package application
 
-import basicClasses.SpaceMarine
+import basicClasses.*
 import clientUtils.Console
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
@@ -8,10 +8,14 @@ import javafx.geometry.Insets
 import javafx.scene.control.*
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.layout.AnchorPane
+import javafx.scene.layout.Pane
+import javafx.scene.layout.VBox
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import javafx.scene.text.Text
 import kotlinx.coroutines.*
+import kotlinx.serialization.json.Json
 import tornadofx.*
 import java.io.ByteArrayInputStream
 import java.util.*
@@ -481,7 +485,7 @@ class MainView : View() {
     }
 
 
-    class SpaceMarineModel : ItemViewModel<SpaceMarine>() {
+    class SpaceMarineModel() : ItemViewModel<SpaceMarine>() {
         val id = bind {item?.getId()?.toProperty()}
         val name = bind {item?.getName()?.toProperty()}
         val coordinates = bind {item?.getCoordinates()?.toProperty()}
@@ -493,6 +497,11 @@ class MainView : View() {
         val chapter = bind {item?.getChapter()?.toProperty()}
     }
 
+    class SpaceMarineController() : Controller() {
+        var collection = listOf<SpaceMarine>().toObservable()
+        val model = SpaceMarineModel()
+    }
+
     private fun showCollection() {
         root.clear()
 
@@ -502,9 +511,10 @@ class MainView : View() {
         val leftMenu = leftBox()
         root.add(leftMenu)
 
-        val model = SpaceMarineModel()
+        val controller = find(SpaceMarineController::class)
 
         val collectionWindow = VBox()
+        collectionWindow.tableview(controller.collection) {
         collectionWindow.style = "-fx-background-color: #ffffff;"
         collectionWindow.layoutX = 72.0
         collectionWindow.layoutY = 84.0
@@ -527,12 +537,21 @@ class MainView : View() {
             column("Melee Weapon", SpaceMarine::getWeapon)
             column("Chapter", SpaceMarine::getChapter)
 
-            bindSelected(model)
+            bindSelected(controller.model)
             smartResize()
         }.style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-position: absolute;"
         collectionWindow.button("Update Collection") {
             action {
-                //TODO: get collection from server
+                try {
+                    val input = console.loadCollection().keys.asSequence()
+                    val collection = input.map {
+                        Json.decodeFromString(SpaceMarine.serializer(), it)
+                    }
+                    controller.collection.setAll(collection.toList().toObservable())
+                    println(controller.collection)
+                } catch (e: NotAuthorized) {
+                    welcomeView()
+                }
             }
         }
 

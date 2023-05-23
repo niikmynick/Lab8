@@ -11,3 +11,6 @@
 # Project exclude paths
 /Gateway/build/
 /Gateway/build/classes/kotlin/main/
+
+# Ignore logs
+/logs/
