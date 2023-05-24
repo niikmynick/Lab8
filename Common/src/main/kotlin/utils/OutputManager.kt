@@ -5,11 +5,11 @@ import java.io.OutputStream
 
 
 class OutputManager() {
-    private var outputStream: OutputStream = System.out
+    var outputStream: OutputStream = System.out
     private var outputMode = OutputMode.ACTIVE
 
     private enum class OutputMode {
-        SILENT, ACTIVE,
+        SILENT, ACTIVE
     }
 
     constructor(outputStream: OutputStream) : this() {

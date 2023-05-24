@@ -29,6 +29,7 @@ class ConnectionManager(host: String, private var port: Int) {
             try {
                 port++
                 datagramSocket = DatagramSocket(port)
+                datagramSocket.soTimeout = 5000
                 unbound = false
                 logger.debug("Bound on port: $port")
             } catch (_:Exception) {}
@@ -89,8 +90,6 @@ class ConnectionManager(host: String, private var port: Int) {
     fun send(query: Query) {
         val jsonQuery = Json.encodeToString(Query.serializer(), query)
         val data = jsonQuery.toByteArray()
-        hostInetAddress = datagramPacket.address
-        port = datagramPacket.port
         logger.info("Sending: $jsonQuery to $hostInetAddress:$port")
         datagramPacket = DatagramPacket(data, data.size, hostInetAddress, port)
         datagramSocket.send(datagramPacket)

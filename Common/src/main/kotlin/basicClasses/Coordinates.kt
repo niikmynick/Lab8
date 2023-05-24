@@ -15,4 +15,14 @@ import kotlinx.serialization.Serializable
 data class Coordinates (
     private var x: Double, //Поле не может быть null
     private var y: Int
-    )
+    ) {
+
+    fun getX() : Double {
+        return x
+    }
+
+    fun getY() : Int {
+        return y
+    }
+}
+

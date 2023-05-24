@@ -3,6 +3,8 @@ package multithread
 import gatewayUtils.ConnectionManager
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import utils.Answer
+import utils.AnswerType
 import utils.Query
 import java.net.InetSocketAddress
 import java.util.concurrent.LinkedBlockingQueue
@@ -25,6 +27,12 @@ class FromClientThread(private val connectionManager: ConnectionManager, private
             } while (!isConnected)
         } catch (e:Exception) {
             logger.warn(e.message)
+            val answer = Answer(AnswerType.ERROR, ("GATEWAY ERROR: " + e.message), received.token, received.args["sender"]!!)
+            val receiver = answer.receiver.split(':')
+            val address = InetSocketAddress(receiver[0].replace("/",""), receiver[1].toInt())
+            if ((address != connectionManager.addressForPinging) and (address != connectionManager.addressForServer)) {
+                connectionManager.sendToClient(answer, address)
+            }
         }
     }
 }

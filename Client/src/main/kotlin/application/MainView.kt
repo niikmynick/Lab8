@@ -1,25 +1,29 @@
 package application
 
-import basicClasses.*
+import basicClasses.SpaceMarine
 import clientUtils.Console
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
+import javafx.animation.Animation
+import javafx.animation.Interpolator
+import javafx.animation.PathTransition
+import javafx.animation.PathTransition.OrientationType
 import javafx.geometry.Insets
-import javafx.scene.control.*
+import javafx.scene.control.Button
+import javafx.scene.control.PasswordField
+import javafx.scene.control.TextArea
+import javafx.scene.control.TextField
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.Pane
-import javafx.scene.layout.VBox
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
-import javafx.scene.shape.Rectangle
+import javafx.scene.shape.*
 import javafx.scene.text.Text
+import javafx.util.Duration
 import kotlinx.coroutines.*
 import kotlinx.serialization.json.Json
 import tornadofx.*
-import java.io.ByteArrayInputStream
-import java.util.*
+
 
 class MainView : View() {
     private val console = Console("localhost", 8061)
@@ -61,6 +65,40 @@ class MainView : View() {
         }
 
         return headBar
+    }
+
+    private fun loadingAnimation() {
+        root.clear()
+        root.add(headPane(false))
+
+        val image = ImageView(Image("file:Client/src/main/resources/miniSpaceMarine.png", 53.8, 66.0, true, true))
+
+        val path = Path()
+        val x = 720.0
+        val y = 450.0
+        val radius = 180.0
+        path.elements.add(MoveTo(x+(radius/2), y-(radius/2)))
+        path.elements.add(ArcTo(radius, radius, 0.0, x+(radius/2) -.1, y-(radius/2) -.1, true, true))
+
+        val text = Text("loading...")
+        text.style =
+            "-fx-text-alignment: center; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
+        text.x = x-20
+        text.y = y+radius+120
+
+        root.add(image)
+        root.add(text)
+
+        val pathTransition = PathTransition()
+        pathTransition.duration = Duration(2000.0)
+        pathTransition.path = path
+        pathTransition.node = image
+        pathTransition.orientation = OrientationType.ORTHOGONAL_TO_TANGENT
+        pathTransition.cycleCount = Animation.INDEFINITE
+        pathTransition.interpolator = Interpolator.LINEAR
+
+        pathTransition.play()
+
     }
 
     private fun leftBox(): VBox {
@@ -158,15 +196,15 @@ class MainView : View() {
 
         val loginText = Text("Hello,\nBefore we start you have to log in to your account")
         loginText.style =
-            "-fx-text-alignment: left; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+            "-fx-text-alignment: center; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
         loginText.wrappingWidth = 600.0
         loginText.x = 420.0
         loginText.y = 388.0
 
         val loginButton = Button("Authorize")
         loginButton.style =
-            "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
-        loginButton.layoutX = 420.0
+            "-fx-alignment: center; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
+        loginButton.layoutX = 640.0
         loginButton.layoutY = 470.0
         loginButton.setPrefSize(160.0, 42.0)
 
@@ -191,8 +229,8 @@ class MainView : View() {
 
     }
 
-    private fun loginView() {
-
+    private fun loginView() : Unit {
+        val coroutineScope = CoroutineScope(Dispatchers.Default)
         root.clear()
 
         val headBar = headPane(false)
@@ -258,12 +296,15 @@ class MainView : View() {
         }
 
         loginButton.setOnMouseClicked {
-            while (!console.authorized) {
-                runBlocking {
-                    if (!console.authorize(username.text, password.text)) {
-                        loginView()
-                    } else {
+            loadingAnimation()
+
+            coroutineScope.launch {
+                val auth = console.authorize(username.text, password.text)
+                runLater {
+                    if (auth) {
                         showMenu()
+                    } else {
+                        welcomeView()
                     }
                 }
             }
@@ -301,8 +342,9 @@ class MainView : View() {
         root.add(loginPane)
     }
 
-    private fun registerView() {
+    private fun registerView() : Unit = runBlocking {
 
+        val coroutineScope = CoroutineScope(Dispatchers.Default)
         root.clear()
 
         val headBar = headPane(false)
@@ -368,13 +410,20 @@ class MainView : View() {
         }
 
         registerButton.setOnMouseClicked {
-            while (!console.authorized) {
-                runBlocking {
-                    if (!console.authorize(username.text, password.text)) {
-                        registerView()
-                    } else {
-                        showMenu()
+            coroutineScope.launch {
+                try {
+                    val auth = withTimeout(4000) {
+                        console.authorize(username.text, password.text)
                     }
+                    runLater {
+                        if (auth) {
+                            showMenu()
+                        } else {
+                            welcomeView()
+                        }
+                    }
+                } catch (e:TimeoutCancellationException) {
+                    welcomeView()
                 }
             }
         }
@@ -541,15 +590,15 @@ class MainView : View() {
 
 
     class SpaceMarineModel() : ItemViewModel<SpaceMarine>() {
-        val id = bind { item?.getId()?.toProperty() }
-        val name = bind { item?.getName()?.toProperty() }
-        val coordinates = bind { item?.getCoordinates()?.toProperty() }
-        val creationDate = bind { item?.getCreationDate()?.toProperty() }
-        val health = bind { item?.getHealth()?.toProperty() }
-        val loyal = bind { item?.getLoyalty()?.toProperty() }
-        val category = bind { item?.getCategory()?.toProperty() }
-        val meleeWeapon = bind { item?.getWeapon()?.toProperty() }
-        val chapter = bind { item?.getChapter()?.toProperty() }
+        val id = bind {item?.getId()?.toProperty()}
+        val name = bind {item?.getName()?.toProperty()}
+        val coordinates = bind {item?.getCoordinates()?.toProperty()}
+        val creationDate = bind {item?.getCreationDate()?.toProperty()}
+        val health = bind {item?.getHealth()?.toProperty()}
+        val loyal = bind {item?.getLoyalty()?.toProperty()}
+        val category = bind {item?.getCategory()?.toProperty()}
+        val meleeWeapon = bind {item?.getWeapon()?.toProperty()}
+        val chapter = bind {item?.getChapter()?.toProperty()}
     }
 
     class SpaceMarineController() : Controller() {
@@ -557,7 +606,8 @@ class MainView : View() {
         val model = SpaceMarineModel()
     }
 
-    private fun showCollection() {
+    private fun showCollection() = runBlocking {
+
         root.clear()
 
         val headBar = headPane(true)
@@ -581,7 +631,8 @@ class MainView : View() {
         collectionTitle.y = 84.0
         collectionWindow.add(collectionTitle)
 
-        val collectionView = tableview<SpaceMarine> {
+
+        val collectionView = tableview(controller.collection) {
             column("Id", SpaceMarine::getId)
             column("Name", SpaceMarine::getName)
             column("Coordinates", SpaceMarine::getCoordinates)
@@ -592,6 +643,8 @@ class MainView : View() {
             column("Melee Weapon", SpaceMarine::getWeapon)
             column("Chapter", SpaceMarine::getChapter)
 
+
+            enableCellEditing()
             bindSelected(controller.model)
             smartResize()
         }
@@ -608,25 +661,34 @@ class MainView : View() {
         updateButton.layoutY = 756.0
 
         updateButton.setOnMouseClicked {
-            try {
-                val input = console.loadCollection().keys.asSequence()
-                val collection = input.map {
-                    Json.decodeFromString(SpaceMarine.serializer(), it)
-                }
-                controller.collection = collection.toList().toObservable()
-                println(controller.collection)
-                collectionView.items = controller.collection
-            } catch (e: NotAuthorized) {
-                welcomeView()
-            }
+            updateCollection(controller)
         }
         collectionWindow.add(collectionView)
+        updateCollection(controller)
         collectionWindow.add(updateButton)
 
         root.add(collectionWindow)
     }
 
-    private fun showRacoon() {
+    fun updateCollection(controller: SpaceMarineController) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default)
+        try {
+            coroutineScope.launch {
+                withTimeout(5000) {
+                    val input = console.loadCollection().keys.asSequence()
+                    val collection = input.map {
+                        Json.decodeFromString(SpaceMarine.serializer(), it)
+                    }
+                    controller.collection.setAll(collection.toList().toObservable())
+                }
+            }
+
+        } catch (e: NotAuthorized) {
+            welcomeView()
+        }
+    }
+
+    fun showRacoon() {
         root.clear()
 
         val headBar = headPane(true)

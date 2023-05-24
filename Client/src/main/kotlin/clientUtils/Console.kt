@@ -20,7 +20,7 @@ import utils.*
 class Console(host: String, port: Int) {
     private var connectionManager = ConnectionManager(host, port)
 
-    private val outputManager = OutputManager()
+    val outputManager = OutputManager()
     private val inputManager = InputManager(outputManager)
 
     val commandInvoker = CommandInvoker(outputManager)
@@ -166,7 +166,7 @@ class Console(host: String, port: Int) {
         val query = Query(QueryType.AUTHORIZATION, "", mutableMapOf("username" to username, "password" to password))
         val answer = connectionManager.checkedSendReceive(query)
         logger.debug("Sent authorization query")
-        if (answer.answerType == AnswerType.ERROR) {
+        if (answer.answerType == AnswerType.ERROR || answer.answerType == AnswerType.AUTH_ERROR) {
             outputManager.println(answer.message)
             authorized = false
         } else {

@@ -23,5 +23,12 @@ data class Chapter(
         else if (marinesCount !in 0..1000) throw MarinesCountValueError("Marine Count value is not within 0 and 1000")
     }
 
+    fun getName() : String {
+        return name
+    }
+
+    fun getCount() : Long {
+        return marinesCount
+    }
 
 }
