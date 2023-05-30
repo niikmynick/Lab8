@@ -1,9 +1,7 @@
 package application
 
 import clientUtils.Console
-import javafx.geometry.Pos
 import javafx.scene.Scene
-import javafx.scene.control.Label
 import javafx.scene.image.Image
 import javafx.scene.paint.Color
 import javafx.stage.Stage
@@ -11,7 +9,7 @@ import javafx.stage.StageStyle
 import tornadofx.*
 
 
-class GUI : App(WelcomeView::class) {
+class GUI : App() {
 
     companion object {
         val console = Console("localhost", 8061)

@@ -13,28 +13,28 @@ import tornadofx.*
 class CollectionView : View() {
     val console = GUI.console
 
-    override val root = vbox {
+    override val root = pane {
+        clear()
 
-        style = "-fx-background-color: #ffffff;"
-        layoutX = 72.0
-        layoutY = 84.0
+//        style = "-fx-background-color: #ffffff;"
+//        layoutX = 72.0
+//        layoutY = 84.0
 
-        (HeadBar(true).root)
+        add(HeadBar(true).root)
 
-        add(LeftMenu().root)
+        add(LeftMenu(this@CollectionView).root)
 
         val controller = find(SpaceMarineController::class)
-
-        updateCollection(console, controller)
 
         text {
             text = "Collection"
             style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
-            x = 72.0
-            y = 84.0
+            x = 100.0
+            y = 124.0
         }
 
         tableview(controller.collection) {
+            updateCollection(console, controller)
             column("Id", SpaceMarine::getId)
             column("Name", SpaceMarine::getName)
             column("Coordinates", SpaceMarine::getCoordinates)
@@ -74,7 +74,15 @@ class CollectionView : View() {
         try {
             coroutineScope.launch {
                 withTimeout(5000) {
-                    val input = server.loadCollection().keys.asSequence()
+                    var map = mapOf<String, String>()
+                    try {
+                        map = server.loadCollection()
+                    } catch (e: NotAuthorized) {
+                        runLater {
+                            replaceWith(AuthView(AuthMode.LOGIN))
+                        }
+                    }
+                    val input = map.keys.asSequence()
                     val collection = input.map {
                         Json.decodeFromString(SpaceMarine.serializer(), it)
                     }

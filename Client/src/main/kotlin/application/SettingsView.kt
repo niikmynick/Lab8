@@ -7,7 +7,7 @@ class SettingsView : View() {
 
         add(HeadBar(true).root)
 
-        add(LeftMenu().root)
+        add(LeftMenu(this@SettingsView).root)
 
         text {
             text = "Settings"

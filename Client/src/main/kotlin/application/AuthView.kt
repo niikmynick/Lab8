@@ -3,6 +3,8 @@ package application
 import javafx.animation.Animation
 import javafx.animation.Interpolator
 import javafx.animation.PathTransition
+import javafx.geometry.Pos
+import javafx.geometry.VPos
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.shape.ArcTo
@@ -20,7 +22,7 @@ class AuthView(form: AuthMode) : View() {
 
     override val root = anchorpane {
         val coroutineScope = CoroutineScope(Dispatchers.Default)
-
+        clear()
         add(HeadBar(false).root)
 
         pane {
@@ -100,6 +102,7 @@ class AuthView(form: AuthMode) : View() {
 
                     coroutineScope.launch {
                         val auth = console.authorize(userName.text, userPassword.text)
+                        //val auth = true
                         runLater {
                             if (auth) {
                                 replaceWith(HomeView())
@@ -150,19 +153,20 @@ class AuthView(form: AuthMode) : View() {
 
     }
 
-    fun loadingAnimation() {
+    private fun loadingAnimation() {
         root.clear()
 
         val image = ImageView(Image("file:Client/src/main/resources/miniSpaceMarine.png", 53.8, 66.0, true, true))
 
         root.add(vbox {
+            alignment = Pos.CENTER
 
             add(HeadBar(false).root)
 
             add(image)
 
             val path = Path().apply {
-                val x = 720.0
+                val x = 0.0
                 val y = 450.0
                 val radius = 180.0
                 elements.add(MoveTo(x+(radius/2), y-(radius/2)))

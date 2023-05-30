@@ -4,7 +4,7 @@ package application
 import javafx.geometry.Insets
 import tornadofx.*
 
-class LeftMenu : View() {
+class LeftMenu(root: View) : View() {
     val console = GUI.console
 
     override val root = vbox(20.0) {
@@ -21,7 +21,8 @@ class LeftMenu : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                replaceWith(HomeView::class)
+                clear()
+                root.replaceWith(HomeView())
             }
         }
 
@@ -32,7 +33,8 @@ class LeftMenu : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                replaceWith(ConsoleView::class)
+                clear()
+                root.replaceWith(ConsoleView())
             }
         }
 
@@ -43,7 +45,8 @@ class LeftMenu : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                replaceWith(CollectionView::class)
+                clear()
+                root.replaceWith(CollectionView())
             }
         }
 

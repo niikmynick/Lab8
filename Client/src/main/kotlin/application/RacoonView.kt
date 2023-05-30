@@ -5,10 +5,11 @@ import tornadofx.*
 
 class RacoonView() : View() {
     override val root = pane {
+        clear()
 
         add(HeadBar(true).root)
 
-        add(LeftMenu().root)
+        add(LeftMenu(this@RacoonView).root)
 
         imageview {
             image = Image("file:Client/src/main/resources/racoon.jpeg", 1300.0, 800.0, true, true)

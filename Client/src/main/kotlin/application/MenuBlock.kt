@@ -1,9 +1,14 @@
 package application
 
 import clientUtils.Console
+import javafx.scene.Node
+import javafx.scene.Scene
+import javafx.scene.layout.Pane
 import tornadofx.*
+import kotlin.reflect.KClass
+import kotlin.reflect.full.primaryConstructor
 
-class MenuBlock(title: String, description: String, buttonText: String, x: Double, y: Double, buttonOption: ButtonOption, console: Console) : View() {
+class MenuBlock(root: View, title: String, description: String, buttonText: String, x: Double, y: Double, view: View, console: Console) : View() {
 
     override val root = pane {
         setPrefSize(436.0, 211.0)
@@ -38,16 +43,9 @@ class MenuBlock(title: String, description: String, buttonText: String, x: Doubl
             setPrefSize(160.0, 42.0)
 
             setOnMouseClicked {
-                TODO()
-//                replaceWith(buttonActions[buttonOption]!!)
+                root.replaceWith(view)
             }
         }
     }
 
-//    private val buttonActions = mapOf(
-//        ButtonOption.RACOON to RacoonView(),
-//        ButtonOption.COLLECTION to CollectionView(console),
-//        ButtonOption.SETTINGS to SettingsView(),
-//        ButtonOption.CONSOLE to ConsoleView(console)
-//    )
 }
