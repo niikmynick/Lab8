@@ -16,18 +16,16 @@ class CollectionView : View() {
     override val root = pane {
         clear()
 
-//        style = "-fx-background-color: #ffffff;"
-//        layoutX = 72.0
-//        layoutY = 84.0
+        style = "-fx-background-color: #ffffff;"
 
-        add(HeadBar(true).root)
+        add(HeadBar(true, this@CollectionView).root)
 
         add(LeftMenu(this@CollectionView).root)
 
         val controller = find(SpaceMarineController::class)
 
         text {
-            text = "Collection"
+            text = GUI.rb.getString("collectionView.title")
             style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
             x = 100.0
             y = 124.0
@@ -35,15 +33,15 @@ class CollectionView : View() {
 
         tableview(controller.collection) {
             updateCollection(console, controller)
-            column("Id", SpaceMarine::getId)
-            column("Name", SpaceMarine::getName)
-            column("Coordinates", SpaceMarine::getCoordinates)
-            column("Creation Date", SpaceMarine::getCreationDate)
-            column("Health", SpaceMarine::getHealth)
-            column("Loyalty", SpaceMarine::getLoyalty)
-            column("Category", SpaceMarine::getCategory)
-            column("Melee Weapon", SpaceMarine::getWeapon)
-            column("Chapter", SpaceMarine::getChapter)
+            column(GUI.rb.getString("collectionView.table.id"), SpaceMarine::getId)
+            column(GUI.rb.getString("collectionView.table.name"), SpaceMarine::getName)
+            column(GUI.rb.getString("collectionView.table.coordinates"), SpaceMarine::getCoordinates)
+            column(GUI.rb.getString("collectionView.table.creationDate"), SpaceMarine::getCreationDate)
+            column(GUI.rb.getString("collectionView.table.health"), SpaceMarine::getHealth)
+            column(GUI.rb.getString("collectionView.table.loyalty"), SpaceMarine::getLoyalty)
+            column(GUI.rb.getString("collectionView.table.category"), SpaceMarine::getCategory)
+            column(GUI.rb.getString("collectionView.table.meleeWeapon"), SpaceMarine::getWeapon)
+            column(GUI.rb.getString("collectionView.table.chapter"), SpaceMarine::getChapter)
 
             enableCellEditing()
             bindSelected(controller.model)
@@ -53,11 +51,11 @@ class CollectionView : View() {
             layoutX = 92.0
             layoutY = 146.0
             columnResizePolicy = SmartResize.POLICY
-            setPrefSize(1000.0, 600.0)
+            setPrefSize(1100.0, 550.0)
         }
 
         button {
-            text = "Update collection"
+            text = GUI.rb.getString("collectionView.button.update")
             style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
             layoutX = 92.0
             layoutY = 756.0

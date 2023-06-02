@@ -15,7 +15,7 @@ class ConsoleView() : View() {
 //        layoutY = 84.0
         style = "-fx-background-color: #ffffff; -fx-position: absolute;"
 
-        add(HeadBar(true).root)
+        add(HeadBar(true, this@ConsoleView).root)
 
         add(LeftMenu(this@ConsoleView).root)
 

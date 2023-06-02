@@ -8,7 +8,7 @@ class WelcomeView() : View() {
     val console = GUI.console
 
     override val root = vbox {
-        add(HeadBar(false).root)
+        add(HeadBar(false, this@WelcomeView).root)
 
         pane {
             alignment = Pos.CENTER
@@ -18,16 +18,14 @@ class WelcomeView() : View() {
             layoutY = 64.0
 
             text {
-                text = "Hello\nBefore we start you have to log in to your account"
                 style =
                     "-fx-text-alignment: center; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
                 wrappingWidth = 600.0
                 x = 420.0
                 y = 388.0
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("welcomeView.welcomeMessage"))
 
             button {
-                text = "Authorize"
                 style =
                     "-fx-alignment: center; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
                 layoutX = 640.0
@@ -47,7 +45,7 @@ class WelcomeView() : View() {
                 setOnMouseClicked {
                     replaceWith(AuthView(AuthMode.LOGIN))
                 }
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("welcomeView.authorize"))
         }
     }
 

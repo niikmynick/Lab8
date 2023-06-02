@@ -7,7 +7,9 @@ class RacoonView() : View() {
     override val root = pane {
         clear()
 
-        add(HeadBar(true).root)
+        style = "-fx-background-color: #ffffff;"
+
+        add(HeadBar(true, this@RacoonView).root)
 
         add(LeftMenu(this@RacoonView).root)
 

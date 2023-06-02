@@ -1,16 +1,5 @@
 package application
 
-import javafx.animation.Animation
-import javafx.animation.Interpolator
-import javafx.animation.PathTransition
-import javafx.geometry.Pos
-import javafx.geometry.VPos
-import javafx.scene.image.Image
-import javafx.scene.image.ImageView
-import javafx.scene.shape.ArcTo
-import javafx.scene.shape.MoveTo
-import javafx.scene.shape.Path
-import javafx.util.Duration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,8 +12,11 @@ class AuthView(form: AuthMode) : View() {
     override val root = anchorpane {
         val coroutineScope = CoroutineScope(Dispatchers.Default)
         clear()
-        add(HeadBar(false).root)
+        add(HeadBar(false, this@AuthView).root)
 
+        setOnKeyTyped {
+
+        }
         pane {
             setPrefSize(450.0, 480.0)
             style =
@@ -33,7 +25,7 @@ class AuthView(form: AuthMode) : View() {
             layoutY = 242.0
 
             text {
-                text = "Auth"
+                text = GUI.rb.getString("authView.auth")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
@@ -41,7 +33,7 @@ class AuthView(form: AuthMode) : View() {
             }
 
             text {
-                text = "Username"
+                text = GUI.rb.getString("authView.username")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
@@ -49,7 +41,7 @@ class AuthView(form: AuthMode) : View() {
             }
 
             val userName = textfield {
-                promptText = "Enter your username here"
+                promptText = GUI.rb.getString("authView.enterUsername")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
                 layoutX = 28.0
@@ -58,7 +50,7 @@ class AuthView(form: AuthMode) : View() {
             }
 
             text {
-                text = "Password"
+                text = GUI.rb.getString("authView.password")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
@@ -66,7 +58,7 @@ class AuthView(form: AuthMode) : View() {
             }
 
             val userPassword = passwordfield {
-                promptText = "Enter your password here"
+                promptText = GUI.rb.getString("authView.enterPassword")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
                 layoutX = 28.0
@@ -76,9 +68,9 @@ class AuthView(form: AuthMode) : View() {
 
             button {
                 text = if (form == AuthMode.REGISTRATION) {
-                    "Sign up"
+                    GUI.rb.getString("authView.signUp")
                 } else {
-                    "Log In"
+                    GUI.rb.getString("authView.logIn")
                 }
                 style =
                     "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
@@ -97,9 +89,6 @@ class AuthView(form: AuthMode) : View() {
                 }
 
                 setOnMouseClicked {
-
-                    loadingAnimation()
-
                     coroutineScope.launch {
                         val auth = console.authorize(userName.text, userPassword.text)
                         //val auth = true
@@ -116,18 +105,19 @@ class AuthView(form: AuthMode) : View() {
                             }
                         }
                     }
+                    this@anchorpane.add(LoadingView().root)
                 }
             }
 
             text {
                 text = if (form == AuthMode.LOGIN) {
-                    "Don't have an account?\nRegister"
+                    GUI.rb.getString("authView.dontHaveAcc")
                 } else {
-                    "Already have an account?\nLog in"
+                    GUI.rb.getString("authView.alreadyHaveAcc")
                 }
                 style =
                     "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
-                x = 152.0
+                x = 160.0
                 y = 421.0
 
                 setOnMouseEntered {
@@ -151,46 +141,6 @@ class AuthView(form: AuthMode) : View() {
 
         }
 
-    }
-
-    private fun loadingAnimation() {
-        root.clear()
-
-        val image = ImageView(Image("file:Client/src/main/resources/miniSpaceMarine.png", 53.8, 66.0, true, true))
-
-        root.add(vbox {
-            alignment = Pos.CENTER
-
-            add(HeadBar(false).root)
-
-            add(image)
-
-            val path = Path().apply {
-                val x = 0.0
-                val y = 450.0
-                val radius = 180.0
-                elements.add(MoveTo(x+(radius/2), y-(radius/2)))
-                elements.add(ArcTo(radius, radius, 0.0, x+(radius/2) -.1, y-(radius/2) -.1, true, true))
-            }
-
-            text {
-                text = "loading ..."
-                style =
-                    "-fx-text-alignment: center; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
-            }
-
-            val pathTransition = PathTransition().apply {
-                duration = Duration(2000.0)
-                this.path = path
-                node = image
-                orientation = PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT
-                cycleCount = Animation.INDEFINITE
-                interpolator = Interpolator.LINEAR
-            }
-
-            pathTransition.play()
-
-        })
     }
 
 }

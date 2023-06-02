@@ -1,20 +1,13 @@
 package application
 
-import clientUtils.Console
-import javafx.scene.Node
-import javafx.scene.Scene
-import javafx.scene.layout.Pane
 import tornadofx.*
-import kotlin.reflect.KClass
-import kotlin.reflect.full.primaryConstructor
 
-class MenuBlock(root: View, title: String, description: String, buttonText: String, x: Double, y: Double, view: View, console: Console) : View() {
+class MenuBlock(root: View, title: String, description: String, buttonText: String, x: Double, y: Double, view: View) : View() {
 
     override val root = pane {
         setPrefSize(436.0, 211.0)
         style =
             "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
-
         layoutX = x
         layoutY = y
 
