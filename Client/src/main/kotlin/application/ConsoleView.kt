@@ -23,11 +23,10 @@ class ConsoleView() : View() {
         console.registerBasicCommands()
 
         text {
-            text = "Console"
             style = "-fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
             x = 72.0
             y = 84.0
-        }
+        }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("consoleView.title"))
 
         val outputArea = textarea {
             isEditable = false
@@ -68,7 +67,7 @@ class ConsoleView() : View() {
 //                    logger.warn(e.message)
                     } catch (e: NotAuthorized) {
                         runBlocking {
-                            replaceWith(AuthView(AuthMode.LOGIN))
+                            replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                         }
                     } catch (e: Exception) {
                         outputArea.appendText(e.message.toString())

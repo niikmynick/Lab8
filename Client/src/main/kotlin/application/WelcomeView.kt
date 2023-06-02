@@ -43,7 +43,7 @@ class WelcomeView() : View() {
                 }
 
                 setOnMouseClicked {
-                    replaceWith(AuthView(AuthMode.LOGIN))
+                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 }
             }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("welcomeView.authorize"))
         }

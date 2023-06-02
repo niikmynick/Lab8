@@ -34,10 +34,9 @@ class LoadingView : View() {
             }
 
             text {
-                text = GUI.rb.getString("authView.loading")
                 style =
                     "-fx-text-alignment: center; -fx-font-size: 24px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.loading"))
 
             val pathTransition = PathTransition().apply {
                 duration = Duration(2000.0)

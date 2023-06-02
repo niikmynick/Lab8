@@ -25,23 +25,22 @@ class CollectionView : View() {
         val controller = find(SpaceMarineController::class)
 
         text {
-            text = GUI.rb.getString("collectionView.title")
             style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
             x = 100.0
             y = 124.0
-        }
+        }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.title"))
 
         tableview(controller.collection) {
             updateCollection(console, controller)
-            column(GUI.rb.getString("collectionView.table.id"), SpaceMarine::getId)
-            column(GUI.rb.getString("collectionView.table.name"), SpaceMarine::getName)
-            column(GUI.rb.getString("collectionView.table.coordinates"), SpaceMarine::getCoordinates)
-            column(GUI.rb.getString("collectionView.table.creationDate"), SpaceMarine::getCreationDate)
-            column(GUI.rb.getString("collectionView.table.health"), SpaceMarine::getHealth)
-            column(GUI.rb.getString("collectionView.table.loyalty"), SpaceMarine::getLoyalty)
-            column(GUI.rb.getString("collectionView.table.category"), SpaceMarine::getCategory)
-            column(GUI.rb.getString("collectionView.table.meleeWeapon"), SpaceMarine::getWeapon)
-            column(GUI.rb.getString("collectionView.table.chapter"), SpaceMarine::getChapter)
+            column("collectionView.table.id", SpaceMarine::getId).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.id"))
+            column("collectionView.table.name", SpaceMarine::getName).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.name"))
+            column("collectionView.table.coordinates", SpaceMarine::getCoordinates).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.coordinates"))
+            column("collectionView.table.creationDate", SpaceMarine::getCreationDate).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.creationDate"))
+            column("collectionView.table.health", SpaceMarine::getHealth).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.health"))
+            column("collectionView.table.loyalty", SpaceMarine::getLoyalty).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.loyalty"))
+            column("collectionView.table.category", SpaceMarine::getCategory).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.category"))
+            column("collectionView.table.meleeWeapon", SpaceMarine::getWeapon).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.meleeWeapon"))
+            column("collectionView.table.chapter", SpaceMarine::getChapter).textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.chapter"))
 
             enableCellEditing()
             bindSelected(controller.model)
@@ -55,7 +54,6 @@ class CollectionView : View() {
         }
 
         button {
-            text = GUI.rb.getString("collectionView.button.update")
             style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
             layoutX = 92.0
             layoutY = 756.0
@@ -63,7 +61,7 @@ class CollectionView : View() {
             setOnMouseClicked {
                 updateCollection(console, controller)
             }
-        }
+        }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
 
     }
 
@@ -77,7 +75,7 @@ class CollectionView : View() {
                         map = server.loadCollection()
                     } catch (e: NotAuthorized) {
                         runLater {
-                            replaceWith(AuthView(AuthMode.LOGIN))
+                            replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                         }
                     }
                     val input = map.keys.asSequence()
@@ -89,7 +87,7 @@ class CollectionView : View() {
             }
 
         } catch (e: NotAuthorized) {
-            replaceWith(AuthView(AuthMode.LOGIN))
+            replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
         }
     }
 

@@ -25,53 +25,45 @@ class AuthView(form: AuthMode) : View() {
             layoutY = 242.0
 
             text {
-                text = GUI.rb.getString("authView.auth")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
                 y = 52.0
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.auth"))
 
             text {
-                text = GUI.rb.getString("authView.username")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
                 y = 120.0
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.username"))
 
             val userName = textfield {
-                promptText = GUI.rb.getString("authView.enterUsername")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
                 layoutX = 28.0
                 layoutY = 140.0
                 setPrefSize(394.0, 42.0)
             }
+            userName.promptTextProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.enterUsername"))
 
             text {
-                text = GUI.rb.getString("authView.password")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 16px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; "
                 x = 28.0
                 y = 230.0
-            }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.password"))
 
             val userPassword = passwordfield {
-                promptText = GUI.rb.getString("authView.enterPassword")
                 style =
                     "-fx-text-alignment: left; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent;"
                 layoutX = 28.0
                 layoutY = 250.0
                 setPrefSize(394.0, 42.0)
             }
+            userPassword.promptTextProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.enterPassword"))
 
             button {
-                text = if (form == AuthMode.REGISTRATION) {
-                    GUI.rb.getString("authView.signUp")
-                } else {
-                    GUI.rb.getString("authView.logIn")
-                }
                 style =
                     "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
                 layoutX = 145.0
@@ -94,27 +86,28 @@ class AuthView(form: AuthMode) : View() {
                         //val auth = true
                         runLater {
                             if (auth) {
-                                replaceWith(HomeView())
+                                replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                             } else {
                                 if (form == AuthMode.REGISTRATION) {
-                                    replaceWith(AuthView(AuthMode.REGISTRATION))
+                                    replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                                 } else if (form == AuthMode.LOGIN) {
-                                    replaceWith(AuthView(AuthMode.LOGIN))
+                                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                                 }
 
                             }
                         }
                     }
+                    this@anchorpane.clear()
                     this@anchorpane.add(LoadingView().root)
                 }
-            }
+            }.textProperty().bind(
+                if (form == AuthMode.REGISTRATION) {
+                    GUI.RESOURCE_FACTORY.getStringBinding("authView.signUp")
+                } else {
+                    GUI.RESOURCE_FACTORY.getStringBinding("authView.logIn")
+                })
 
             text {
-                text = if (form == AuthMode.LOGIN) {
-                    GUI.rb.getString("authView.dontHaveAcc")
-                } else {
-                    GUI.rb.getString("authView.alreadyHaveAcc")
-                }
                 style =
                     "-fx-text-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
                 x = 160.0
@@ -132,12 +125,17 @@ class AuthView(form: AuthMode) : View() {
 
                 setOnMouseClicked {
                     if (form == AuthMode.REGISTRATION) {
-                        replaceWith(AuthView(AuthMode.LOGIN))
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     } else if (form == AuthMode.LOGIN) {
-                        replaceWith(AuthView(AuthMode.REGISTRATION))
+                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
                 }
-            }
+            }.textProperty().bind(
+                if (form == AuthMode.LOGIN) {
+                    GUI.RESOURCE_FACTORY.getStringBinding("authView.dontHaveAcc")
+                } else {
+                    GUI.RESOURCE_FACTORY.getStringBinding("authView.alreadyHaveAcc")
+                })
 
         }
 

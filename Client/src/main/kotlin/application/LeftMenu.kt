@@ -22,7 +22,7 @@ class LeftMenu(root: View) : View() {
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
                 clear()
-                root.replaceWith(HomeView())
+                root.replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
             }
         }
 
@@ -34,7 +34,7 @@ class LeftMenu(root: View) : View() {
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
                 clear()
-                root.replaceWith(ConsoleView())
+                root.replaceWith(ConsoleView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
             }
         }
 
@@ -46,7 +46,7 @@ class LeftMenu(root: View) : View() {
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
                 clear()
-                root.replaceWith(CollectionView())
+                root.replaceWith(CollectionView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
             }
         }
 

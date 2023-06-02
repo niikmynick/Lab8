@@ -29,7 +29,7 @@ class GUI : App() {
             Settings("en_US", listOf("en_US","es_HN","it_IT", "ro_RO","ru_RU"), "localhost", 8061)
         }
         var console = Console(settings.host, settings.port)
-        var rb = ResourceBundle.getBundle("messages", Locale(settings.language))
+        //var rb = ResourceBundle.getBundle("messages", Locale(settings.language))
     }
 
     override fun start(stage: Stage) {
