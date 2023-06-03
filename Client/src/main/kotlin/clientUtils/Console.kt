@@ -1,10 +1,12 @@
 package clientUtils
 
+import basicClasses.SpaceMarine
 import clientUtils.readers.StringReader
 import commands.*
 import commands.consoleCommands.*
 import exceptions.InvalidInputException
 import exceptions.NotAuthorized
+import kotlinx.serialization.json.Json
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import utils.*
@@ -21,7 +23,7 @@ class Console(host: String, port: Int) {
     private var connectionManager = ConnectionManager(host, port)
 
     val outputManager = OutputManager()
-    private val inputManager = InputManager(outputManager)
+    val inputManager = InputManager(outputManager)
 
     val commandInvoker = CommandInvoker(outputManager)
     private val commandReceiver = CommandReceiver(commandInvoker, outputManager, inputManager, connectionManager)
@@ -36,6 +38,7 @@ class Console(host: String, port: Int) {
      * Contains the token that authorizes the client to execute commands in the server. It is initialized as an empty string.
      */
     private var token = ""
+    var username = ""
     var authorized: Boolean = false
 
     /**
@@ -155,6 +158,7 @@ class Console(host: String, port: Int) {
             logger.debug("Authorized")
             authorized = true
             token = answer.token
+            this.username = username
         }
     }
 
@@ -173,6 +177,7 @@ class Console(host: String, port: Int) {
             logger.debug("Authorized")
             token = answer.token
             authorized = true
+            this.username = username
         }
         return authorized
     }
@@ -184,6 +189,21 @@ class Console(host: String, port: Int) {
             throw NotAuthorized(answer.message)
         }
         return jsonCreator.stringToObject(answer.message)
+    }
+
+    fun spaceMarineAction(sm: SpaceMarine, action: String) {
+        var query = Query(QueryType.COMMAND_EXEC, "", mutableMapOf(), token)
+        when (action) {
+            "update" -> query = Query(QueryType.COMMAND_EXEC, "update_id", mutableMapOf("id" to sm.getId().toString(), "spaceMarine" to Json.encodeToString(SpaceMarine.serializer(), sm)), token)
+            "add" -> query = Query(QueryType.COMMAND_EXEC, "add", mutableMapOf("spaceMarine" to Json.encodeToString(SpaceMarine.serializer(), sm)), token)
+            "remove" -> query = Query(QueryType.COMMAND_EXEC, "remove_by_id", mutableMapOf("id" to sm.getId().toString()), token)
+        }
+        val answer = connectionManager.checkedSendReceive(query)
+        if (answer.answerType == AnswerType.AUTH_ERROR) {
+            throw NotAuthorized(answer.message)
+        } else if (answer.answerType == AnswerType.ERROR) {
+            throw Exception(answer.message)
+        }
     }
 
     fun executeCommand(query: List<String>) {

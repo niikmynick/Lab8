@@ -1,5 +1,10 @@
-package application
+package application.views
 
+import application.AuthMode
+import application.GUI
+import application.HeadBar
+import javafx.scene.control.PasswordField
+import javafx.scene.control.TextField
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -8,15 +13,12 @@ import tornadofx.*
 class AuthView(form: AuthMode) : View() {
 
     val console = GUI.console
-
+    val coroutineScope = CoroutineScope(Dispatchers.Default)
     override val root = anchorpane {
-        val coroutineScope = CoroutineScope(Dispatchers.Default)
+        style = "-fx-background-color: #ffffff; "
         clear()
         add(HeadBar(false, this@AuthView).root)
 
-        setOnKeyTyped {
-
-        }
         pane {
             setPrefSize(450.0, 480.0)
             style =
@@ -63,7 +65,7 @@ class AuthView(form: AuthMode) : View() {
             }
             userPassword.promptTextProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("authView.enterPassword"))
 
-            button {
+            val sendButton = button {
                 style =
                     "-fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
                 layoutX = 145.0
@@ -81,26 +83,10 @@ class AuthView(form: AuthMode) : View() {
                 }
 
                 setOnMouseClicked {
-                    coroutineScope.launch {
-                        val auth = console.authorize(userName.text, userPassword.text)
-                        //val auth = true
-                        runLater {
-                            if (auth) {
-                                replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                            } else {
-                                if (form == AuthMode.REGISTRATION) {
-                                    replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                                } else if (form == AuthMode.LOGIN) {
-                                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                                }
-
-                            }
-                        }
-                    }
-                    this@anchorpane.clear()
-                    this@anchorpane.add(LoadingView().root)
+                    sendAuthRequest(userName, userPassword, form)
                 }
-            }.textProperty().bind(
+            }
+            sendButton.textProperty().bind(
                 if (form == AuthMode.REGISTRATION) {
                     GUI.RESOURCE_FACTORY.getStringBinding("authView.signUp")
                 } else {
@@ -139,6 +125,27 @@ class AuthView(form: AuthMode) : View() {
 
         }
 
+    }
+
+    fun sendAuthRequest(userName: TextField, userPassword:PasswordField, form: AuthMode) {
+        coroutineScope.launch {
+            val auth = console.authorize(userName.text, userPassword.text)
+            //val auth = true
+            runLater {
+                if (auth) {
+                    replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                } else {
+                    if (form == AuthMode.REGISTRATION) {
+                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    } else if (form == AuthMode.LOGIN) {
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    }
+
+                }
+            }
+        }
+        root.clear()
+        root.add(LoadingView().root)
     }
 
 }

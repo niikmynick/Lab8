@@ -1,5 +1,6 @@
 package application
 
+import application.views.SettingsView
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.scene.image.Image

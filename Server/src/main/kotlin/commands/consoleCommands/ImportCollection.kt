@@ -31,7 +31,6 @@ class ImportCollection() : Command() {
      */
     override fun execute(args: Map<String, String>, username: String): Answer {
         val collection = dbManager.loadCollection()
-        println(collection)
         val map = mutableMapOf<String, String>()
         for (element in collection) {
             val spaceMarine = jsonCreator.stringToObject<SpaceMarine>(element.key)

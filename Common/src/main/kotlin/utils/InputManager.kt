@@ -2,7 +2,6 @@ package utils
 
 import exceptions.InvalidInputException
 import exceptions.RecursiveCallException
-import java.io.Console
 import java.io.File
 import java.io.FileReader
 import java.io.InputStream
@@ -10,7 +9,7 @@ import java.util.*
 
 class InputManager(private val outputManager: OutputManager) {
     private val scanners: Stack<Scanner> = Stack()
-    private var inputStream = System.`in`
+    var inputStream = System.`in`
     private var scriptMode = false
     private var files:Stack<File> = Stack()
 
@@ -29,7 +28,11 @@ class InputManager(private val outputManager: OutputManager) {
     fun read(): String {
         return if (scanners.peek().hasNextLine()) {
             scanners.peek().nextLine()
-        } else {
+        } else if (scanners.size > 1) {
+            scanners.pop()
+            read()
+        }
+        else {
             if (scriptMode) {
                 finishScriptReader()
                 ""
@@ -58,5 +61,9 @@ class InputManager(private val outputManager: OutputManager) {
         outputManager.enableOutput()
         outputManager.println("Script from file was executed")
         files.pop()
+    }
+
+    fun addScanner(scanner: Scanner) {
+        scanners.push(scanner)
     }
 }

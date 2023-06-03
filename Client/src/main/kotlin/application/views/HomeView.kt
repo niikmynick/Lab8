@@ -1,5 +1,9 @@
-package application
+package application.views
 
+import application.GUI
+import application.HeadBar
+import application.LeftMenu
+import application.MenuBlock
 import tornadofx.*
 
 class HomeView : View() {

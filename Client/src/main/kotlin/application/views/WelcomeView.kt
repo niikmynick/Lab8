@@ -1,5 +1,8 @@
-package application
+package application.views
 
+import application.AuthMode
+import application.GUI
+import application.HeadBar
 import javafx.geometry.Pos
 import tornadofx.*
 

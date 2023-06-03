@@ -65,7 +65,6 @@ class ReceiverThread(private val taskQueue: LinkedBlockingQueue<Query>,
                 QueryType.AUTHORIZATION -> {
                     logger.info("Received authorization request")
                     if (query.message != "logout") {
-                        fileManager.load(collectionManager)
                         answer = if (userManager.userExists(query.args["username"]!!)) {
                             val token = userManager.login(query.args["username"]!!, query.args["password"]!!)
                             if (token.isNotEmpty()) {

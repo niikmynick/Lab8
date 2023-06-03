@@ -1,5 +1,7 @@
-package application
+package application.views
 
+import application.GUI
+import application.HeadBar
 import javafx.animation.Animation
 import javafx.animation.Interpolator
 import javafx.animation.PathTransition
@@ -15,7 +17,7 @@ import tornadofx.*
 class LoadingView : View() {
     override val root = anchorpane {
         clear()
-
+        style = "-fx-background-color: #ffffff; "
         vbox {
             style = "-fx-background-color: #ffffff; "
             val image = ImageView(Image("file:Client/src/main/resources/miniSpaceMarine.png", 53.8, 66.0, true, true))

@@ -1,6 +1,9 @@
 package application
 
 
+import application.views.CollectionView
+import application.views.ConsoleView
+import application.views.HomeView
 import javafx.geometry.Insets
 import tornadofx.*
 

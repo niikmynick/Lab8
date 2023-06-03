@@ -1,5 +1,8 @@
-package application
+package application.views
 
+import application.GUI
+import application.HeadBar
+import application.LeftMenu
 import tornadofx.*
 
 class SettingsView : View() {
@@ -11,14 +14,14 @@ class SettingsView : View() {
         add(LeftMenu(this@SettingsView).root)
 
         text {
-            style = "-fx-font-size: 32px; -fx-font_family: 'IBM Plex Sans';"
-            x = 72.0
-            y = 108.0
+            style = "-fx-font-size: 32px; -fx-font-family: 'IBM Plex Sans'; -fx-fill: #000000; -fx-position: absolute;"
+            x = 100.0
+            y = 124.0
         }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("settingsView.title"))
 
         pane {
-            layoutX = 72.0
-            layoutY = 124.0
+            layoutX = 92.0
+            layoutY = 146.0
             setPrefSize(500.0, 250.0)
             style =
                 "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
@@ -42,7 +45,7 @@ class SettingsView : View() {
                         "-fx-alignment: center; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
 
                     setOnMouseClicked {
-
+                        //TODO
                     }
                 }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("settingsView.account.changeUsername"))
 
@@ -51,13 +54,15 @@ class SettingsView : View() {
                         "-fx-alignment: center; -fx-text-alignment: center; -fx-vertical-alignment: center; -fx-font-size: 14px; -fx-font-family: 'IBM Plex Sans'; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px; -fx-background-color: transparent; -fx-fill: #000000; -fx-position: absolute;"
 
                     setOnMouseClicked {
-
+                        //TODO
                     }
                 }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("settingsView.account.changePassword"))
             }
 
         }
 
+        //TODO: Second pane for language settings
+        //TODO: Third pane for saving username and password locally?
 
 
     }

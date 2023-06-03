@@ -1,5 +1,7 @@
-package application
+package application.views
 
+import application.HeadBar
+import application.LeftMenu
 import javafx.scene.image.Image
 import tornadofx.*
 

@@ -5,7 +5,7 @@ import java.io.OutputStream
 
 
 class OutputManager() {
-    var outputStream: OutputStream = System.out
+    var outputStream : OutputStream = System.out
     private var outputMode = OutputMode.ACTIVE
 
     private enum class OutputMode {
