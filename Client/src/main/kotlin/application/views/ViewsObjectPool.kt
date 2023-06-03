@@ -1,15 +1,29 @@
 package application.views
 
-import application.AuthMode
 
 class ViewsObjectPool {
-    val authView = AuthView(AuthMode.LOGIN)
-    val collectionView = CollectionView()
-    val consoleView = ConsoleView()
-    val loadingView = LoadingView()
-    val mapView = MapView()
-    val racoonView = RacoonView()
-    val settingsView = SettingsView()
-    val welcomeView = WelcomeView()
-    val homeView = HomeView()
+    val loadingView : LoadingView by lazy {
+        LoadingView()
+    }
+    val collectionView : CollectionView by lazy {
+        CollectionView()
+    }
+    val consoleView : ConsoleView by lazy {
+        ConsoleView()
+    }
+    val mapView : MapView by lazy {
+        MapView()
+    }
+    val racoonView : RacoonView by lazy {
+        RacoonView()
+    }
+    val settingsView : SettingsView by lazy {
+        SettingsView()
+    }
+    val welcomeView : WelcomeView by lazy {
+        WelcomeView()
+    }
+    val homeView : HomeView by lazy {
+        HomeView()
+    }
 }

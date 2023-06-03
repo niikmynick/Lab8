@@ -12,7 +12,6 @@ import tornadofx.*
 
 class AuthView(form: AuthMode) : View() {
 
-    val console = GUI.console
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     override val root = anchorpane {
         style = "-fx-background-color: #ffffff; "
@@ -129,11 +128,12 @@ class AuthView(form: AuthMode) : View() {
 
     fun sendAuthRequest(userName: TextField, userPassword:PasswordField, form: AuthMode) {
         coroutineScope.launch {
-            val auth = console.authorize(userName.text, userPassword.text)
+            val auth = GUI.console.authorize(userName.text, userPassword.text)
             //val auth = true
+            val homeView = GUI.viewsObjectPool.homeView
             runLater {
                 if (auth) {
-                    replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    replaceWith(homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 } else {
                     if (form == AuthMode.REGISTRATION) {
                         replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
@@ -145,7 +145,7 @@ class AuthView(form: AuthMode) : View() {
             }
         }
         root.clear()
-        root.add(LoadingView().root)
+        root.add(GUI.viewsObjectPool.loadingView.root)
     }
 
 }
