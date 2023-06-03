@@ -38,14 +38,23 @@ class MapView() : View() {
             //fill = ImagePattern(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this@rectangle.width, this@rectangle.height, true, true))
             //style = "-fx-stroke: black; -fx-stroke-width: 1px;"
             border = Border(BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii(20.0), BorderWidths(1.0)))
-            try {
-                controller.updateCollection(GUI.console)
-            } catch (e:Exception) {
-                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+            if (GUI.console.username.isNotEmpty()) {
+                try {
+                    controller.updateCollection(GUI.console)
+                } catch (e: Exception) {
+                    replaceWith(
+                        AuthView(AuthMode.LOGIN),
+                        ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT)
+                    )
+                }
             }
-            imageview(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this.width, this.height, true, true))
+            val world = imageview(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this.width, this.height, true, true))
+
             for (sm in controller.observableCollection) {
                 val imageview = imageview(spaceMarineImage)
+                imageview.setOnMouseClicked {
+                    println("sdasd")
+                }
                 imageview.xProperty().bind(sm.getCoordinates().getX().toProperty())
                 imageview.yProperty().bind(sm.getCoordinates().getY().toProperty())
                 this.add(imageview)

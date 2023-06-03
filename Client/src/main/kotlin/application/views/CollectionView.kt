@@ -6,7 +6,6 @@ import javafx.scene.control.ButtonType
 import tornadofx.*
 
 class CollectionView : View() {
-    val console = GUI.console
 
     override val root = pane {
         clear()
@@ -26,11 +25,13 @@ class CollectionView : View() {
         }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.title"))
 
         tableview(controller.observableCollection) {
-            try {
-                controller.updateCollection(console)
-            } catch (e:Exception) {
-                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-            }
+            if (GUI.console.username.isNotEmpty()) {
+                try {
+                    controller.updateCollection(GUI.console)
+                } catch (e:Exception) {
+                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                }
+            }            
 
             val idColumn = column("collectionView.table.id", SpaceMarineController.SpaceMarineWithAuthor::getId)
             idColumn.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.id"))
@@ -75,9 +76,9 @@ class CollectionView : View() {
             regainFocusAfterEdit()
 
             onEditCommit {
-                if ((console.username == it.getAuthor()) or (console.username == "admin")) {
+                if ((GUI.console.username == it.getAuthor()) or (GUI.console.username == "admin")) {
                     try {
-                        controller.spaceMarineEdit(console, it.getSpaceMarine(), "update")
+                        controller.spaceMarineEdit(GUI.console, it.getSpaceMarine(), "update")
                     } catch (e:Exception) {
                         replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
@@ -113,7 +114,7 @@ class CollectionView : View() {
 
                 setOnMouseClicked {
                     try {
-                        controller.updateCollection(console)
+                        controller.updateCollection(GUI.console)
                     } catch (e:Exception) {
                         replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
@@ -125,7 +126,7 @@ class CollectionView : View() {
 //            layoutX = 292.0
 //            layoutY = 756.0
 
-                enableWhen { controller.model.empty.not() and ((controller.model.author.value == console.username) or (console.username == "admin"))}
+                enableWhen { controller.model.empty.not() and ((controller.model.author.value == GUI.console.username) or (GUI.console.username == "admin"))}
 
                 setOnMouseClicked {
                     val alert = alert(Alert.AlertType.CONFIRMATION,
@@ -135,7 +136,7 @@ class CollectionView : View() {
                         //TODO: Style
                         if (it == ButtonType.OK) {
                             try {
-                                controller.spaceMarineEdit(console, controller.model.item.getSpaceMarine(), "remove")
+                                controller.spaceMarineEdit(GUI.console, controller.model.item.getSpaceMarine(), "remove")
                                 controller.observableCollection.remove(controller.model.item)
                             } catch (e:Exception) {
                                 replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
@@ -154,8 +155,7 @@ class CollectionView : View() {
 
                 setOnMouseClicked {
                     try {
-                        var spaceMarine = SpaceMarine()
-                        openInternalWindow(ChangingFormView(controller, spaceMarine))
+                        openInternalWindow(ChangingFormView(controller))
                     } catch (e:Exception) {
                         println(e)
                         replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
