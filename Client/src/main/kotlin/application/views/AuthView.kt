@@ -12,7 +12,6 @@ import tornadofx.*
 
 class AuthView(form: AuthMode) : View() {
 
-    val console = GUI.console
     val coroutineScope = CoroutineScope(Dispatchers.Default)
     override val root = anchorpane {
         style = "-fx-background-color: #ffffff; "
@@ -111,9 +110,9 @@ class AuthView(form: AuthMode) : View() {
 
                 setOnMouseClicked {
                     if (form == AuthMode.REGISTRATION) {
-                        replaceWith(GUI.viewsObjectPool.authViewLogin, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     } else if (form == AuthMode.LOGIN) {
-                        replaceWith(GUI.viewsObjectPool.authViewReg, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
                 }
             }.textProperty().bind(
@@ -129,16 +128,17 @@ class AuthView(form: AuthMode) : View() {
 
     fun sendAuthRequest(userName: TextField, userPassword:PasswordField, form: AuthMode) {
         coroutineScope.launch {
-            val auth = console.authorize(userName.text, userPassword.text)
+            val auth = GUI.console.authorize(userName.text, userPassword.text)
             //val auth = true
+            val homeView = GUI.viewsObjectPool.homeView
             runLater {
                 if (auth) {
-                    replaceWith(GUI.viewsObjectPool.homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    replaceWith(homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 } else {
                     if (form == AuthMode.REGISTRATION) {
-                        replaceWith(GUI.viewsObjectPool.authViewReg, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     } else if (form == AuthMode.LOGIN) {
-                        replaceWith(GUI.viewsObjectPool.authViewLogin, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
 
                 }

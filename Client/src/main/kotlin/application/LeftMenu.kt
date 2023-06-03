@@ -1,6 +1,5 @@
 package application
 
-
 import application.views.CollectionView
 import application.views.ConsoleView
 import application.views.HomeView
@@ -8,7 +7,6 @@ import javafx.geometry.Insets
 import tornadofx.*
 
 class LeftMenu(root: View) : View() {
-    val console = GUI.console
 
     override val root = vbox(20.0) {
         style = "-fx-background-color: #fff;"
@@ -24,8 +22,9 @@ class LeftMenu(root: View) : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                clear()
-                root.replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                if (root::class != HomeView::class) {
+                    root.replaceWith(GUI.viewsObjectPool.homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                }
             }
         }
 
@@ -36,8 +35,9 @@ class LeftMenu(root: View) : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                clear()
-                root.replaceWith(ConsoleView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                if (root::class != ConsoleView::class) {
+                root.replaceWith(GUI.viewsObjectPool.consoleView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                }
             }
         }
 
@@ -48,8 +48,9 @@ class LeftMenu(root: View) : View() {
             }
             style = "-fx-background-color: transparent;"
             setOnMouseClicked {
-                clear()
-                root.replaceWith(CollectionView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                if (root::class != CollectionView::class) {
+                root.replaceWith(GUI.viewsObjectPool.collectionView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                }
             }
         }
 

@@ -17,15 +17,15 @@ class HomeView() : View() {
 
         add(LeftMenu(this@HomeView).root)
 
-        add(MenuBlock(this@HomeView,"homeView.title.console", "homeView.description.console", "homeView.button.console", 72.0, 84.0, ConsoleView()))
+        add(MenuBlock(this@HomeView,"homeView.title.console", "homeView.description.console", "homeView.button.console", 72.0, 84.0, GUI.viewsObjectPool.consoleView))
 
-        add(MenuBlock(this@HomeView,"homeView.title.settings", "homeView.description.settings", "homeView.button.settings", 528.0, 84.0, SettingsView()))
+        add(MenuBlock(this@HomeView,"homeView.title.settings", "homeView.description.settings", "homeView.button.settings", 528.0, 84.0, GUI.viewsObjectPool.settingsView))
 
-        add(MenuBlock(this@HomeView,"homeView.title.collection", "homeView.description.collection", "homeView.button.collection", 984.0, 84.0, CollectionView()))
+        add(MenuBlock(this@HomeView,"homeView.title.collection", "homeView.description.collection", "homeView.button.collection", 984.0, 84.0, GUI.viewsObjectPool.collectionView))
 
-        add(MenuBlock(this@HomeView,"homeView.title.funStuff", "homeView.description.funStuff", "homeView.button.funStuff", 72.0, 315.0, RacoonView()))
+        add(MenuBlock(this@HomeView,"homeView.title.funStuff", "homeView.description.funStuff", "homeView.button.funStuff", 72.0, 315.0, GUI.viewsObjectPool.racoonView))
 
-        add(MenuBlock(this@HomeView,"homeView.title.map", "homeView.description.map", "homeView.button.map", 528.0, 315.0, MapView()))
+        add(MenuBlock(this@HomeView,"homeView.title.map", "homeView.description.map", "homeView.button.map", 528.0, 315.0, GUI.viewsObjectPool.mapView))
     }
 
 }
