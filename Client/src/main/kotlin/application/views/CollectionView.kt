@@ -77,7 +77,7 @@ class CollectionView : View() {
             regainFocusAfterEdit()
 
             onEditCommit {
-                if (console.username == it.getAuthor()) {
+                if ((console.username == it.getAuthor()) or (console.username == "admin")) {
                     try {
                         controller.spaceMarineEdit(console, it.getSpaceMarine(), "update")
                     } catch (e:Exception) {
@@ -102,44 +102,69 @@ class CollectionView : View() {
             setPrefSize(1100.0, 550.0)
         }
 
-        button {
-            style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+        tilepane {
             layoutX = 92.0
             layoutY = 756.0
+            hgap = 30.0
+            vgap = 30.0
 
-            setOnMouseClicked {
-                try {
-                    controller.updateCollection(console)
-                } catch (e:Exception) {
-                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                }
-            }
-        }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
+            button {
+                style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+//            layoutX = 92.0
+//            layoutY = 756.0
 
-        button {
-            style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
-            layoutX = 292.0
-            layoutY = 756.0
-            enableWhen { controller.model.empty.not() and (controller.model.author.value == console.username)} // TODO: CHECK FOR AUTHOR
-
-            setOnMouseClicked {
-                val alert = alert(Alert.AlertType.CONFIRMATION,
-                    GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.header"],
-                    GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.content"],
-                ) {
-                    //TODO: Style
-                    if (it == ButtonType.OK) {
-                        try {
-                            controller.spaceMarineEdit(console, controller.model.item.getSpaceMarine(), "remove")
-                            controller.observableCollection.remove(controller.model.item)
-                        } catch (e:Exception) {
-                            replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                        }
-
+                setOnMouseClicked {
+                    try {
+                        controller.updateCollection(console)
+                    } catch (e:Exception) {
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
                 }
-            }
-        }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.delete"))
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
+
+            button {
+                style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+//            layoutX = 292.0
+//            layoutY = 756.0
+                enableWhen { controller.model.empty.not() and ((controller.model.author.value == console.username) or (console.username == "admin"))}
+
+                setOnMouseClicked {
+                    val alert = alert(Alert.AlertType.CONFIRMATION,
+                        GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.header"],
+                        GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.content"],
+                    ) {
+                        //TODO: Style
+                        if (it == ButtonType.OK) {
+                            try {
+                                controller.spaceMarineEdit(console, controller.model.item.getSpaceMarine(), "remove")
+                                controller.observableCollection.remove(controller.model.item)
+                            } catch (e:Exception) {
+                                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                            }
+
+                        }
+                    }
+                }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.delete"))
+
+
+            button {
+                style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+//            layoutX = 92.0
+//            layoutY = 756.0
+
+                setOnMouseClicked {
+                    try {
+                        controller.updateCollection(console)
+//                    root.add()
+                    } catch (e:Exception) {
+                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    }
+                }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.add"))
+
+        }
+
 
     }
 
