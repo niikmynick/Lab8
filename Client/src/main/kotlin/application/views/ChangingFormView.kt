@@ -12,49 +12,59 @@ class ChangingFormView(controller: SpaceMarineController, private val spaceMarin
         val textfields = mutableListOf<TextField>()
         val checkboxs = mutableListOf<javafx.scene.control.CheckBox>()
         val comboBoxes = mutableListOf<javafx.scene.control.ComboBox<Any>>()
-        fieldset("Changing Space Marine") {
-            field("Name") {
+        fieldset {
+            field {
                 val name = textfield(spaceMarine.getName())
                 textfields.add(name)
-            }
-            field("Coordinates") {
-                field("X") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.name"))
+
+            field {
+                field {
                     val x = textfield(spaceMarine.getCoordinatesX().toString())
                     textfields.add(x)
-                }
-                field("Y") {
+                }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.X"))
+
+                field {
                     val y = textfield(spaceMarine.getCoordinatesY().toString())
                     textfields.add(y)
-                }
-            }
-            field("Health") {
+                }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.Y"))
+
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.coordinates"))
+
+            field {
                 val health = textfield(spaceMarine.getHealth().toString())
                 textfields.add(health)
-            }
-            field("Loyal") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.health"))
+
+            field {
                 val loyal = checkbox(spaceMarine.getLoyalty().toString())
                 checkboxs.add(loyal)
-            }
-            field("Category") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.loyalty"))
+
+            field {
                 val category = combobox(spaceMarine.getCategory().toProperty(), AstartesCategory.values().toList())
                 comboBoxes.add(category as javafx.scene.control.ComboBox<Any>)
-            }
-            field("Melee Weapon") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.category"))
+
+            field {
                 val weapon = combobox(spaceMarine.getWeapon().toProperty(), MeleeWeapon.values().toList())
                 comboBoxes.add(weapon as javafx.scene.control.ComboBox<Any>)
-            }
-            field("Chapter") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.meleeWeapon"))
+
+            field {
                 field("Name") {
                     val name = textfield(spaceMarine.getChapterName())
                     textfields.add(name)
-                }
+                }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.chapterName"))
+
                 field("Marines Count") {
                     val count = textfield(spaceMarine.getChapterCount().toString())
                     textfields.add(count)
-                }
-            }
+                }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.countOfMarines"))
 
-            button("Save changes") {
+            }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.chapter"))
+
+            button {
                 action {
                     spaceMarine.setName(textfields[0].text)
                     spaceMarine.setCoordinates(Coordinates(textfields[1].text.toDouble(), textfields[2].text.toInt()))
@@ -66,8 +76,22 @@ class ChangingFormView(controller: SpaceMarineController, private val spaceMarin
                     controller.spaceMarineEdit(GUI.console, spaceMarine, "add")
                     close()
                 }
-            }
-        }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.save"))
+
+            button {
+                action {
+                    close()
+                }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.cancel"))
+
+            button {
+                action {
+                    controller.spaceMarineEdit(GUI.console, spaceMarine, "remove")
+                    close()
+                }
+            }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.delete"))
+
+        }.textProperty.bind(GUI.RESOURCE_FACTORY.getStringBinding("changingForm.title"))
     }
 
 }

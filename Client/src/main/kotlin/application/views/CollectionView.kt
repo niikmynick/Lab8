@@ -126,7 +126,7 @@ class CollectionView : View() {
 //            layoutX = 292.0
 //            layoutY = 756.0
 
-                enableWhen { controller.model.empty.not() and ((controller.model.author.value == GUI.console.username) or (GUI.console.username == "admin"))}
+                enableWhen { controller.model.empty.not() and (controller.model.author.value == GUI.console.username) or (GUI.console.username == "admin")}
 
                 setOnMouseClicked {
                     val alert = alert(Alert.AlertType.CONFIRMATION,

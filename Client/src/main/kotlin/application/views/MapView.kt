@@ -48,20 +48,42 @@ class MapView() : View() {
                     )
                 }
             }
-            val world = imageview(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this.width, this.height, true, true))
 
-            for (sm in controller.observableCollection) {
-                val imageview = imageview(spaceMarineImage)
-                imageview.setOnMouseClicked {
-                    println("sdasd")
+            fun setMap() {
+                val world = imageview(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this.width, this.height, true, true))
+
+                for (sm in controller.observableCollection) {
+                    val imageview = imageview(spaceMarineImage)
+                    imageview.setOnMouseClicked {
+                        openInternalWindow(ChangingFormView(controller, sm.getSpaceMarine()))
+                    }
+
+                    imageview.xProperty().bind(sm.getCoordinates().getX().toProperty())
+                    imageview.yProperty().bind(sm.getCoordinates().getY().toProperty())
+                    imageview.tooltip {
+                        text = "${sm.getId()}\n${sm.getName()}\n${sm.getCoordinates()}\n${sm.getAuthor()}"
+                    }
+                    this.add(imageview)
                 }
-                imageview.xProperty().bind(sm.getCoordinates().getX().toProperty())
-                imageview.yProperty().bind(sm.getCoordinates().getY().toProperty())
-                imageview.tooltip {
-                    text = "${sm.getId()}\n${sm.getName()}\n${sm.getCoordinates()}\n${sm.getAuthor()}"
-                }
-                this.add(imageview)
+
+                button {
+                    style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
+                    layoutX = 1130.0
+                    layoutY = 0.0
+
+                    setOnMouseClicked {
+                        try {
+                            controller.updateCollection(GUI.console)
+                            clear()
+                            setMap()
+                        } catch (e:Exception) {
+                            replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        }
+                    }
+                }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
             }
+
+            setMap()
 
 //            for (sm in controller.observableCollection) {
 ////                val imageview = imageview(spaceMarineImage)
