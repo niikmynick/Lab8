@@ -210,6 +210,7 @@ class Console(host: String, port: Int) {
         commandInvoker.executeCommand(query, token)
         executeFlag = commandInvoker.getCommandMap()[query[0]]?.getExecutionFlag()
     }
+
     /**
      * Starts the interactive mode which asks for prompt until an [Exit] command is executed
      */

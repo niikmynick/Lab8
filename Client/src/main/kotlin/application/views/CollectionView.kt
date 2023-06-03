@@ -2,7 +2,6 @@ package application.views
 
 import application.*
 import javafx.scene.control.Alert
-import javafx.scene.control.ButtonType
 import tornadofx.*
 
 class CollectionView : View() {
@@ -126,25 +125,8 @@ class CollectionView : View() {
 //            layoutX = 292.0
 //            layoutY = 756.0
 
-                enableWhen { controller.model.empty.not() and ((controller.model.author.value == GUI.console.username) or (GUI.console.username == "admin"))}
+                enableWhen { controller.model.empty.not() and (controller.model.author.value == GUI.console.username) or (GUI.console.username == "admin")}
 
-                setOnMouseClicked {
-                    val alert = alert(Alert.AlertType.CONFIRMATION,
-                        GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.header"],
-                        GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.content"],
-                    ) {
-                        //TODO: Style
-                        if (it == ButtonType.OK) {
-                            try {
-                                controller.spaceMarineEdit(GUI.console, controller.model.item.getSpaceMarine(), "remove")
-                                controller.observableCollection.remove(controller.model.item)
-                            } catch (e:Exception) {
-                                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                            }
-
-                        }
-                    }
-                }
             }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.delete"))
 
 
