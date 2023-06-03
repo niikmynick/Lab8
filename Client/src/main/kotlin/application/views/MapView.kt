@@ -57,6 +57,9 @@ class MapView() : View() {
                 }
                 imageview.xProperty().bind(sm.getCoordinates().getX().toProperty())
                 imageview.yProperty().bind(sm.getCoordinates().getY().toProperty())
+                imageview.tooltip {
+                    text = "${sm.getId()}\n${sm.getName()}\n${sm.getCoordinates()}\n${sm.getAuthor()}"
+                }
                 this.add(imageview)
             }
 

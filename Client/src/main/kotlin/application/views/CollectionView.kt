@@ -133,7 +133,7 @@ class CollectionView : View() {
                         GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.header"],
                         GUI.RESOURCE_FACTORY.getResources()["collectionView.button.delete.alert.content"],
                     ) {
-                        //TODO: Style
+                        // TODO: Style
                         if (it == ButtonType.OK) {
                             try {
                                 controller.spaceMarineEdit(GUI.console, controller.model.item.getSpaceMarine(), "remove")
