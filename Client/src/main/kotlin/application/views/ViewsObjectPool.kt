@@ -3,7 +3,8 @@ package application.views
 import application.AuthMode
 
 class ViewsObjectPool {
-    val authView = AuthView(AuthMode.LOGIN)
+    val authViewLogin = AuthView(AuthMode.LOGIN)
+    val authViewReg = AuthView(AuthMode.REGISTRATION)
     val collectionView = CollectionView()
     val consoleView = ConsoleView()
     val loadingView = LoadingView()

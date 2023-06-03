@@ -111,9 +111,9 @@ class AuthView(form: AuthMode) : View() {
 
                 setOnMouseClicked {
                     if (form == AuthMode.REGISTRATION) {
-                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(GUI.viewsObjectPool.authViewLogin, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     } else if (form == AuthMode.LOGIN) {
-                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(GUI.viewsObjectPool.authViewReg, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
                 }
             }.textProperty().bind(
@@ -133,19 +133,19 @@ class AuthView(form: AuthMode) : View() {
             //val auth = true
             runLater {
                 if (auth) {
-                    replaceWith(HomeView(), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    replaceWith(GUI.viewsObjectPool.homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 } else {
                     if (form == AuthMode.REGISTRATION) {
-                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(GUI.viewsObjectPool.authViewReg, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     } else if (form == AuthMode.LOGIN) {
-                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        replaceWith(GUI.viewsObjectPool.authViewLogin, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
 
                 }
             }
         }
         root.clear()
-        root.add(LoadingView().root)
+        root.add(GUI.viewsObjectPool.loadingView.root)
     }
 
 }

@@ -1,6 +1,5 @@
 package application.views
 
-import application.AuthMode
 import application.GUI
 import application.HeadBar
 import javafx.geometry.Pos
@@ -46,7 +45,7 @@ class WelcomeView() : View() {
                 }
 
                 setOnMouseClicked {
-                    replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                    replaceWith(GUI.viewsObjectPool.authViewLogin, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 }
             }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("welcomeView.authorize"))
         }
