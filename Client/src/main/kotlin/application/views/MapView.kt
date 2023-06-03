@@ -38,7 +38,7 @@ class MapView() : View() {
             //fill = ImagePattern(Image("file:Client/src/main/resources/World_map_blank_without_borders.png", this@rectangle.width, this@rectangle.height, true, true))
             //style = "-fx-stroke: black; -fx-stroke-width: 1px;"
             border = Border(BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii(20.0), BorderWidths(1.0)))
-            if (GUI.console.username.isNotEmpty()) {
+            if (GUI.console.authorized) {
                 try {
                     controller.updateCollection(GUI.console)
                 } catch (e: Exception) {
@@ -55,7 +55,9 @@ class MapView() : View() {
                 for (sm in controller.observableCollection) {
                     val imageview = imageview(spaceMarineImage)
                     imageview.setOnMouseClicked {
-                        openInternalWindow(ChangingFormView(controller, sm.getSpaceMarine()))
+                        if (sm.getAuthor() == GUI.console.username) {
+                            openInternalWindow(ChangingFormView(controller, sm.getSpaceMarine()))
+                        }
                     }
 
                     imageview.xProperty().bind(sm.getCoordinates().getX().toProperty())
@@ -65,8 +67,6 @@ class MapView() : View() {
                     }
                     this.add(imageview)
                 }
-
-                setMap()
 
                 button {
                     style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
@@ -85,6 +85,7 @@ class MapView() : View() {
                 }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
             }
 
+            setMap()
 //            for (sm in controller.observableCollection) {
 ////                val imageview = imageview(spaceMarineImage)
 ////                this.add(imageview)

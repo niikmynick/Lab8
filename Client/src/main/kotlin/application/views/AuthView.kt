@@ -5,9 +5,7 @@ import application.GUI
 import application.HeadBar
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import tornadofx.*
 
 class AuthView(form: AuthMode) : View() {
@@ -82,7 +80,20 @@ class AuthView(form: AuthMode) : View() {
                 }
 
                 setOnMouseClicked {
-                    sendAuthRequest(userName, userPassword, form)
+
+                    runBlocking {
+                        if (sendAuthRequest(userName, userPassword, form)) {
+                            replaceWith(GUI.viewsObjectPool.homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                        } else {
+                            if (form == AuthMode.REGISTRATION) {
+                                replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                            } else if (form == AuthMode.LOGIN) {
+                                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+                            }
+                        }
+
+                    }
+
                 }
             }
             sendButton.textProperty().bind(
@@ -126,26 +137,28 @@ class AuthView(form: AuthMode) : View() {
 
     }
 
-    fun sendAuthRequest(userName: TextField, userPassword:PasswordField, form: AuthMode) {
-        coroutineScope.launch {
-            val auth = GUI.console.authorize(userName.text, userPassword.text)
-            //val auth = true
-            val homeView = GUI.viewsObjectPool.homeView
-            runLater {
-                if (auth) {
-                    replaceWith(homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                } else {
-                    if (form == AuthMode.REGISTRATION) {
-                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                    } else if (form == AuthMode.LOGIN) {
-                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
-                    }
-
-                }
-            }
+    suspend fun sendAuthRequest(userName: TextField, userPassword:PasswordField, form: AuthMode) : Boolean {
+        val job = coroutineScope.async {
+            GUI.console.authorize(userName.text, userPassword.text)
+//            val auth = GUI.console.authorize(userName.text, userPassword.text)
+//            //val auth = true
+//            val homeView = GUI.viewsObjectPool.homeView
+//            runLater {
+//                if (auth) {
+//                    replaceWith(homeView, ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+//                } else {
+//                    if (form == AuthMode.REGISTRATION) {
+//                        replaceWith(AuthView(AuthMode.REGISTRATION), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+//                    } else if (form == AuthMode.LOGIN) {
+//                        replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+//                    }
+//
+//                }
+//            }
         }
         root.clear()
-        root.add(GUI.viewsObjectPool.loadingView.root)
+        return job.await()
+
     }
 
 }

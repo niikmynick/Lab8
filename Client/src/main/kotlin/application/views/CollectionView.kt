@@ -31,7 +31,9 @@ class CollectionView : View() {
                 } catch (e:Exception) {
                     replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                 }
-            }            
+            } else {
+                replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
+            }
 
             val idColumn = column("collectionView.table.id", SpaceMarineController.SpaceMarineWithAuthor::getId)
             idColumn.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.table.id"))

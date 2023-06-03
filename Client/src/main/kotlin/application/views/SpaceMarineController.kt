@@ -13,10 +13,10 @@ class SpaceMarineController() : Controller() {
     val relationships = mutableMapOf<Long, String>()
     var observableCollection = listOf<SpaceMarineWithAuthor>().toObservable()
 
-    fun updateCollection(console: Console) = runBlocking{
+    fun updateCollection(console: Console) {
         val coroutineScope = CoroutineScope(Dispatchers.Default)
         try {
-            val job = coroutineScope.launch() {
+            coroutineScope.launch() {
                 withTimeout(5000) {
                     val map: Map<String, String> = console.loadCollection()
 
@@ -35,7 +35,6 @@ class SpaceMarineController() : Controller() {
                     observableCollection.setAll(tempList.toObservable())
                 }
             }
-            job.join()
         } catch (e: Exception) {
             throw e
         }

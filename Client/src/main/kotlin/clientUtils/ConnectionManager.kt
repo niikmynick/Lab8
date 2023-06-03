@@ -29,7 +29,7 @@ class ConnectionManager(host: String, private var port: Int) {
             try {
                 port++
                 datagramSocket = DatagramSocket(port)
-                datagramSocket.soTimeout = 5000
+                datagramSocket.soTimeout = timeout
                 unbound = false
                 logger.debug("Bound on port: $port")
             } catch (_:Exception) {}
