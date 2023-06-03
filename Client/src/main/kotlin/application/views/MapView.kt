@@ -66,6 +66,8 @@ class MapView() : View() {
                     this.add(imageview)
                 }
 
+                setMap()
+
                 button {
                     style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
                     layoutX = 1130.0
@@ -82,8 +84,6 @@ class MapView() : View() {
                     }
                 }.textProperty().bind(GUI.RESOURCE_FACTORY.getStringBinding("collectionView.button.update"))
             }
-
-            setMap()
 
 //            for (sm in controller.observableCollection) {
 ////                val imageview = imageview(spaceMarineImage)
