@@ -6,7 +6,7 @@ import application.LeftMenu
 import application.MenuBlock
 import tornadofx.*
 
-class HomeView : View() {
+class HomeView() : View() {
 
     val console = GUI.console
 
@@ -24,6 +24,8 @@ class HomeView : View() {
         add(MenuBlock(this@HomeView,"homeView.title.collection", "homeView.description.collection", "homeView.button.collection", 984.0, 84.0, CollectionView()))
 
         add(MenuBlock(this@HomeView,"homeView.title.funStuff", "homeView.description.funStuff", "homeView.button.funStuff", 72.0, 315.0, RacoonView()))
+
+        add(MenuBlock(this@HomeView,"homeView.title.map", "homeView.description.map", "homeView.button.map", 528.0, 315.0, MapView()))
     }
 
 }

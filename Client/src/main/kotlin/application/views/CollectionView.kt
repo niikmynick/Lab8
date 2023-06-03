@@ -1,8 +1,6 @@
 package application.views
 
 import application.*
-import basicClasses.SpaceMarine
-import exceptions.NotAuthorized
 import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
 import tornadofx.*

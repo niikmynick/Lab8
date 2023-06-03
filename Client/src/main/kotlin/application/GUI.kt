@@ -1,6 +1,6 @@
 package application
 
-import application.views.WelcomeView
+import application.views.ViewsObjectPool
 import clientUtils.Console
 import javafx.scene.Scene
 import javafx.scene.image.Image
@@ -29,6 +29,7 @@ class GUI : App() {
             Settings("en_US", listOf("en_US","es_HN","it_IT", "ro_RO","ru_RU"), "localhost", 8061)
         }
         var console = Console(settings.host, settings.port)
+        val viewsObjectPool = ViewsObjectPool()
     }
 
     override fun start(stage: Stage) {
@@ -40,7 +41,7 @@ class GUI : App() {
         val image = Image("file:Client/src/main/resources/app_logo.jpg")
         stage.icons.add(image)
 
-        val primaryScene = Scene(WelcomeView().root, 1440.0, 900.0)
+        val primaryScene = Scene(viewsObjectPool.welcomeView.root, 1440.0, 900.0)
         stage.scene = primaryScene
         stage.scene.fill = Color.TRANSPARENT
 
