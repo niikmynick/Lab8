@@ -124,6 +124,7 @@ class CollectionView : View() {
                 style = "-fx-background-color: #ffffff; -fx-font-family: 'IBM Plex Sans'; -fx-font-size: 16px; -fx-fill: #000000; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 20px;"
 //            layoutX = 292.0
 //            layoutY = 756.0
+
                 enableWhen { controller.model.empty.not() and ((controller.model.author.value == console.username) or (console.username == "admin"))}
 
                 setOnMouseClicked {
@@ -153,9 +154,10 @@ class CollectionView : View() {
 
                 setOnMouseClicked {
                     try {
-                        controller.updateCollection(console)
-//                    root.add()
+                        var spaceMarine = SpaceMarine()
+                        openInternalWindow(ChangingFormView(controller, spaceMarine))
                     } catch (e:Exception) {
+                        println(e)
                         replaceWith(AuthView(AuthMode.LOGIN), ViewTransition.Slide(0.3.seconds, ViewTransition.Direction.LEFT))
                     }
                 }

@@ -119,6 +119,14 @@ data class SpaceMarine (
         return coordinates
     }
 
+    fun getCoordinatesX(): Double {
+        return coordinates.getX()
+    }
+
+    fun getCoordinatesY(): Int {
+        return coordinates.getY()
+    }
+
     /**
      * Get health
      *
@@ -163,6 +171,16 @@ data class SpaceMarine (
     fun getChapter(): Chapter? {
         return chapter
     }
+
+    fun getChapterName(): String? {
+        return chapter?.getName()
+    }
+
+    fun getChapterCount(): Long? {
+        return chapter?.getCount()
+    }
+
+
     /**
      * Sets new name only if string is not empty
      */

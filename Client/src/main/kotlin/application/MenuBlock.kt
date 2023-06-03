@@ -8,6 +8,7 @@ class MenuBlock(root: View, title: String, description: String, buttonText: Stri
         setPrefSize(436.0, 211.0)
         style =
             "-fx-background-color: #ffffff; -fx-border-radius: 20px; -fx-border-color: #000000; -fx-border-width: 1px;"
+
         layoutX = x
         layoutY = y
 
